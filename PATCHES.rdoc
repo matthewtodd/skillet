@@ -1,2 +1,3 @@
 * chef-server-slice/app/controllers/openid_server.rb:67        -- change '!= 'application/json'' to '== :json'
 * chef-server-slice/app/views/openid_server/decide.html.haml:1 -- change 'url' to 'slice_url'
+* chef/lib/chef/rest.rb:168                                    -- insert basic http auth
