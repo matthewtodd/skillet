@@ -7,7 +7,7 @@ class RequireSSL
     if env['rack.url_scheme'] == 'https'
       @app.call(env)
     else
-      [ 400, {}, 'SSL is required.' ]
+      [ 400, {}, "SSL is required.\n#{env.inspect}" ]
     end
   end
 end
