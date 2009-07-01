@@ -1,0 +1,4 @@
+= Next Up
+
+* TODO Monkeypatch Chef::Queue to call "straight through" to the Indexer.
+* TODO Find out where to get openid-store-couchdb, and use it.
