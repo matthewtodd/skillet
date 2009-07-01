@@ -9,9 +9,7 @@ dependency 'chef-server-slice'
 use_template_engine :haml
 
 Merb::Config.use do |config|
-  config[:session_id_key]     = '_chef_server_session_id'
-  config[:session_secret_key] = 'asdfasdfasdfasdf'
-  config[:session_store]      = 'cookie'
+  config[:session_store] = :cookie
 end
 
 Merb::BootLoader.before_app_loads do

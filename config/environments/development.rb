@@ -1,7 +1,8 @@
 Merb::Config.use do |config|
-  config[:cluster]           = 2
-  config[:daemonize]         = true
-  config[:exception_details] = true
+  config[:cluster]            = 2
+  config[:daemonize]          = true
+  config[:exception_details]  = true
+  config[:session_secret_key] = 'asdfasdfasdfasdf'
 end
 
 Merb::BootLoader.before_app_loads do
