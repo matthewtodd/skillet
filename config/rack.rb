@@ -21,7 +21,7 @@ end
 unless Merb.environment == 'development'
   use RequireSSL
   use Rack::Auth::Basic do |access_token, _|
-    api_key == ENV['APP_ACCESS_TOKEN']
+    access_token == ENV['APP_ACCESS_TOKEN']
   end
 end
 
