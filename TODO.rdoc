@@ -1,4 +1,6 @@
 = Next Up
 
+* TODO Lock down authorized_openid_providers, http://wiki.opscode.com/display/chef/Securing+Chef+Server
 * TODO Monkeypatch Chef::Queue to call "straight through" to the Indexer.
-* TODO Find out where to get openid-store-couchdb, and use it.
+* TODO Enquire about outdated http://github.com/b/openid-store-couchdb, http://tickets.opscode.com/browse/CHEF-199
+* TODO Use http://tickets.opscode.com/browse/CHEF-241
