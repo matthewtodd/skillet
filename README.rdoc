@@ -12,8 +12,8 @@ As a prerequisite, you'll need access to a CouchDB instance somehow somewhere. (
 
 I happen to be using Heroku. Here's how you'd deploy there:
 
- git clone http://github.com/matthewtodd/chef-server-app.git
- cd chef-server-app
+ git clone http://github.com/matthewtodd/kitchen.git
+ cd kitchen
  # adjust cookbooks to your liking
  heroku create
  heroku config:add APP_ACCESS_TOKEN=...
