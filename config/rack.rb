@@ -4,11 +4,17 @@ class RequireSSL
   end
 
   def call(env)
-    if env['rack.url_scheme'] == 'https'
-      @app.call(env)
-    else
-      [ 400, {}, "SSL is required.\n#{env.inspect}" ]
-    end
+    ssl?(env) ? @app.call(env) : bad_request
+  end
+
+  private
+
+  def ssl?(env)
+    env['HTTPS'] == 'on' || env['HTTP_X_FORWARDED_PROTO'] == 'https'
+  end
+
+  def bad_request
+    [ 400, {}, 'SSL is required.' ]
   end
 end
 
