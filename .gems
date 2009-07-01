@@ -1,2 +1,1 @@
-merb-slices
-chef-server-slice --source http://gems.opscode.com
+chef-server-slice --source http://gems.opscode.com --source http://gems.rubyforge.org
