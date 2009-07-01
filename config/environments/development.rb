@@ -15,7 +15,7 @@ Merb::BootLoader.after_app_loads do
   unless Chef::OpenIDRegistration.has_key?('admin')
     admin_account = Chef::OpenIDRegistration.new
     admin_account.name = 'admin'
-    admin_account.set_password 'password'
+    admin_account.set_password 'foo'
     admin_account.validated = true
     admin_account.admin = true
     admin_account.save
