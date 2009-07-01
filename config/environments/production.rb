@@ -8,6 +8,8 @@ end
 
 Merb::BootLoader.before_app_loads do
   Chef::Config.instance_eval do
-    couchdb_url environment_variable(:couchdb_url)
+    authorized_openid_identifiers [environment_variable(:authorized_openid_identifier)]
+    couchdb_url                   environment_variable(:couchdb_url)
+    openid_url                    environment_variable(:openid_url)
   end
 end
