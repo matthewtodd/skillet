@@ -1,1 +1,2 @@
+chef              --source http://gems.opscode.com --source http://gems.rubyforge.org
 chef-server-slice --source http://gems.opscode.com --source http://gems.rubyforge.org
