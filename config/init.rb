@@ -21,6 +21,7 @@ Merb::BootLoader.before_app_loads do
   end
 
   # MonkeyPatching Chef::Queue to no-op, since I don't have a queue
+  # TODO call "straight through" to the Indexer instead.
   class Chef::Queue
     def self.connect
       $stderr.puts 'STUB - not really connecting to queue'
