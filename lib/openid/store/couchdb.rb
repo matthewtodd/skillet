@@ -15,7 +15,7 @@ module OpenID
     # that OpenID is even *going* *away* in Chef 0.8. So, we just need a
     # stopgap measure anyway.
     #
-    # I proudly present: the stopgap maesure:
+    # I proudly present: the stopgap measure:
     class CouchDB < Interface
       def initialize(*args)
         Association.create_design_document
