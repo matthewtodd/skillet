@@ -28,7 +28,7 @@ module OpenID
         end
 
         def name
-          [@timestamp.strftime(OpenID::Nonce::TIME_FMT), Base64.encode64(@server_url).chomp, Base64.encode64(@salt).chomp].join('-')
+          [@timestamp.utc.strftime(OpenID::Nonce::TIME_FMT), Base64.encode64(@server_url).chomp, Base64.encode64(@salt).chomp].join('-')
         end
 
         def save
@@ -50,7 +50,7 @@ module OpenID
 
         def self.json_create(attributes)
           server_url  = attributes['server_url']
-          timestamp   = Time.at(attributes['timestamp'])
+          timestamp   = attributes['timestamp']
           salt        = attributes['salt']
           couchdb_rev = attributes['_rev']
 
