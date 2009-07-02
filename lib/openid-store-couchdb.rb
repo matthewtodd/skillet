@@ -1,0 +1,1 @@
+require 'openid/store/couchdb'

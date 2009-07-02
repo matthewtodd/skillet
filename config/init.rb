@@ -14,10 +14,10 @@ end
 
 Merb::BootLoader.before_app_loads do
   Chef::Config.instance_eval do
-    cookbook_path      [Merb.root_path('site-cookbooks'), Merb.root_path('cookbooks')]
-    openid_cstore_path Merb.root_path('tmp')
-    openid_store_path  Merb.root_path('tmp')
-    search_index_path  Merb.root_path('tmp', 'search_index')
+    cookbook_path         [Merb.root_path('site-cookbooks'), Merb.root_path('cookbooks')]
+    openid_cstore_couchdb true
+    openid_store_couchdb  true
+    search_index_path     Merb.root_path('tmp', 'search_index')
   end
 
   # MonkeyPatching Chef::Queue to no-op, since I don't have a queue
