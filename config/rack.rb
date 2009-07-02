@@ -18,9 +18,15 @@ class RequireSSL
   end
 end
 
+class RequireBasicAuthentication < Rack::Auth::Basic
+  def realm
+    'The Kitchen'
+  end
+end
+
 unless Merb.environment == 'development'
   use RequireSSL
-  use Rack::Auth::Basic do |access_token, _|
+  use RequireBasicAuthentication do |access_token, _|
     access_token == ENV['APP_ACCESS_TOKEN']
   end
 end
