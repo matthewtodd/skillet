@@ -1,4 +1,3 @@
 = Next Up
 
 * TODO Monkeypatch Chef::Queue to call "straight through" to the Indexer.
-* TODO Use http://tickets.opscode.com/browse/CHEF-241
