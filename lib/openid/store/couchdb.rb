@@ -6,6 +6,16 @@ require 'openid/store/couchdb/nonce'
 module OpenID
   module Store
 
+    # Reading through http://github.com/b/openid-store-couchdb, it didn't seem
+    # entirely complete, and it made use of features I don't yet support in
+    # hideabed. Also, there seems to be no word on the progress of integrating
+    # it into Chef, as per http://tickets.opscode.com/browse/CHEF-199.
+    # Finally,
+    # http://lists.opscode.com/sympa/arc/chef-dev/2009-06/msg00001.html claims
+    # that OpenID is even *going* *away* in Chef 0.8. So, we just need a
+    # stopgap measure anyway.
+    #
+    # I proudly present: the stopgap maesure:
     class CouchDB < Interface
       def initialize(*args)
         Association.create_design_document
