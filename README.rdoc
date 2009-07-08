@@ -33,6 +33,16 @@ Once you start connecting your Chef clients, you'll need to crank your dynos to 
 
 == Notes
 
-It would be great if Heroku supported git submodules. Then we could pull in git://github.com/opscode/cookbooks as cookbooks and our own as site-cookbooks, without duplication.
+It would be great if Heroku supported git submodules. (See http://docs.heroku.com/constraints#git-submodules.) Then we could pull in git://github.com/opscode/cookbooks as cookbooks and our own as site-cookbooks, without duplication.
 
-I've made a few patches: see config/init.rb, lib/openid/store/couchdb.rb, and slices/chef-server-slice. (I'm mid-process on my  http://wiki.opscode.com/display/opscode/Contributor+License+Agreement. It would be nice to whack the lib and slices directories, as well as the monkey patches in init.rb!) Notably, I've totally stubbed out Chef::Queue, so there's no search indexing. I don't know if this is a big deal yet.
+I've made a few patches: see config/init.rb, lib/openid/store/couchdb.rb, and slices/chef-server-slice.
+
+Most notably, I've totally stubbed out Chef::Queue, so there's no search indexing. I don't know if this is a big deal yet.
+
+The rest of the patches are currently being applied to Chef proper:
+
+* http://tickets.opscode.com/browse/CHEF-430
+* http://tickets.opscode.com/browse/CHEF-431
+* http://tickets.opscode.com/browse/CHEF-432
+
+With any luck, they'll be included in the 0.7.6 release! It will be nice, from a cognitive accessibility standpoint, to whack the lib and slices directories as well as the Chef::REST monkey patch in init.rb.
