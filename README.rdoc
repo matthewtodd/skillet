@@ -33,7 +33,7 @@ Once you start connecting your Chef clients, you'll need to crank your dynos to 
 
 == Notes
 
-It would be great if Heroku supported git submodules. (See http://docs.heroku.com/constraints#git-submodules.) Then we could pull in git://github.com/opscode/cookbooks as cookbooks and our own as site-cookbooks, without duplication.
+It would be great if Heroku supported git submodules. (See http://docs.heroku.com/constraints#git-submodules and http://groups.google.com/group/heroku/browse_thread/thread/5e6807fcd2572f64/bee1a3b581db9c00.) Then we could pull in git://github.com/opscode/cookbooks as cookbooks and our own as site-cookbooks, without duplication.
 
 I've made a few patches: see config/init.rb, lib/openid/store/couchdb.rb, and slices/chef-server-slice.
 
