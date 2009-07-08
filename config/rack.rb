@@ -20,7 +20,7 @@ end
 
 class RequireBasicAuthentication < Rack::Auth::Basic
   def realm
-    'The Kitchen'
+    'The Skillet'
   end
 end
 

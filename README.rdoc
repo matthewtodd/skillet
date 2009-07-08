@@ -1,4 +1,4 @@
-= Kitchen
+= Skillet
 
 An easy-to-deploy standalone Rack app with bundled Chef server and cookbooks.
 
@@ -12,8 +12,8 @@ As a prerequisite, you'll need access to a CouchDB instance somehow somewhere. (
 
 I happen to be using Heroku. Here's how you'd deploy there:
 
- git clone http://github.com/matthewtodd/kitchen.git
- cd kitchen
+ git clone http://github.com/matthewtodd/skillet.git
+ cd skillet
  # adjust cookbooks to your liking
  heroku create
  heroku config:add APP_ACCESS_TOKEN=...
