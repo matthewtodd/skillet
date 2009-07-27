@@ -1,0 +1,43 @@
+<VirtualHost *:443>
+  ServerName <%= @params[:server_name] %>
+  ServerAlias <% @params[:server_aliases].each do |a| %><%= "#{a}" %> <% end %>
+  DocumentRoot <%= @params[:docroot] %>
+
+  Alias /facebox <%= @params[:gems_path] %>/gems/chef-server-slice-<%= @params[:version] %>/public/facebox
+  Alias /images <%= @params[:gems_path] %>/gems/chef-server-slice-<%= @params[:version] %>/public/images
+  Alias /javascripts <%= @params[:gems_path] %>/gems/chef-server-slice-<%= @params[:version] %>/public/javascripts
+  Alias /stylesheets <%= @params[:gems_path] %>/gems/chef-server-slice-<%= @params[:version] %>/public/stylesheets
+  Alias /web-app-theme <%= @params[:gems_path] %>/gems/chef-server-slice-<%= @params[:version] %>/public/web-app-theme
+
+  PassengerDefaultUser chef
+
+  LogLevel info
+  ErrorLog <%= @node[:apache][:log_dir] %>/<%= @params[:name] %>-error.log
+  CustomLog <%= @node[:apache][:log_dir] %>/<%= @params[:name] %>-access.log combined
+  
+  SSLEngine On
+  SSLCertificateFile /etc/chef/certificates/<%= @node[:chef][:server_fqdn] %>.pem
+  SSLCertificateKeyFile /etc/chef/certificates/<%= @node[:chef][:server_fqdn] %>.pem
+</VirtualHost>
+
+<VirtualHost *:444>
+  ServerName <%= @params[:server_name] %>
+  ServerAlias <% @params[:server_aliases].each do |a| %><%= "#{a}" %> <% end %>
+  DocumentRoot <%= @params[:docroot] %>
+
+  Alias /facebox <%= @params[:gems_path] %>/gems/chef-server-slice-<%= @params[:version] %>/public/facebox
+  Alias /images <%= @params[:gems_path] %>/gems/chef-server-slice-<%= @params[:version] %>/public/images
+  Alias /javascripts <%= @params[:gems_path] %>/gems/chef-server-slice-<%= @params[:version] %>/public/javascripts
+  Alias /stylesheets <%= @params[:gems_path] %>/gems/chef-server-slice-<%= @params[:version] %>/public/stylesheets
+  Alias /web-app-theme <%= @params[:gems_path] %>/gems/chef-server-slice-<%= @params[:version] %>/public/web-app-theme
+
+  PassengerDefaultUser chef
+
+  LogLevel info
+  ErrorLog <%= @node[:apache][:log_dir] %>/<%= @params[:name] %>-error.log
+  CustomLog <%= @node[:apache][:log_dir] %>/<%= @params[:name] %>-access.log combined
+  
+  SSLEngine On
+  SSLCertificateFile /etc/chef/certificates/<%= @node[:chef][:server_fqdn] %>.pem
+  SSLCertificateKeyFile /etc/chef/certificates/<%= @node[:chef][:server_fqdn] %>.pem
+</VirtualHost>
