@@ -1,0 +1,2 @@
+Here, I've just removed the requirement to use port 444 for chef client's
+openid_url.
