@@ -19,7 +19,7 @@ Opscode/cookbooks:
 * erlang
 * runit
 
-= ATTRIBUTES: 
+= ATTRIBUTES:
 
 * dynomite[:master] - whether this node is a master cluster node.
 * dynomite[:cluster_name] - name of the dynomite cluster.

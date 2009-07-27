@@ -7,9 +7,9 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -32,7 +32,7 @@ directory "#{node[:gem_server][:directory]}/gems" do
 end
 
 cron "mirror_rubyforge" do
-  command "rsync -av rsync://master.mirror.rubyforge.org/gems/ #{node[:gem_server][:rf_directory]}/gems && gem generate_index -d #{node[:gem_server][:rf_directory]}" 
+  command "rsync -av rsync://master.mirror.rubyforge.org/gems/ #{node[:gem_server][:rf_directory]}/gems && gem generate_index -d #{node[:gem_server][:rf_directory]}"
   hour "2"
   minute "0"
 end

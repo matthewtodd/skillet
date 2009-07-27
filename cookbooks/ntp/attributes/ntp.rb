@@ -1,6 +1,6 @@
 ntp Mash.new unless attribute?("ntp")
 
-case platform 
+case platform
 when "ubuntu","debian"
   ntp[:service] = "ntp"
 when "redhat","centos","fedora"

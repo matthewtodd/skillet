@@ -18,7 +18,7 @@ Opscode cookbooks, http://github.com/opscode/cookbooks/tree/master:
 * java
 * runit (runit_service)
 
-= ATTRIBUTES: 
+= ATTRIBUTES:
 
 * solr[:user] - username for solr process and files/dirs.
 * solr[:uid] - UID for solr user.
@@ -29,9 +29,9 @@ Opscode cookbooks, http://github.com/opscode/cookbooks/tree/master:
 
 To create a solr instance for an application, use the solr_instance define:
 
-  solr_instance "my_app" 
+  solr_instance "my_app"
 
-The recipe assumes that id_rsa ssh key pair has been created for the solr user. The files should be located in the cookbook where the solr_instance is used (for example a site-cookbook). 
+The recipe assumes that id_rsa ssh key pair has been created for the solr user. The files should be located in the cookbook where the solr_instance is used (for example a site-cookbook).
 
 Also create the runit run and log run templates. For now the directory to cd into needs to be specified in the run template. See the sample in this cookbook.
 
@@ -40,7 +40,7 @@ Also create the runit run and log run templates. For now the directory to cd int
 Optionally specify a cookbook where the ssh keypair is located, otherwise generate keys and put the files in the solr cookbook. Empty files are located there for placeholders.
 
 = LICENSE and AUTHOR:
-      
+
 Author:: Joshua Timberman (<joshua@opscode.com>)
 Copyright:: 2009, Opscode, Inc
 

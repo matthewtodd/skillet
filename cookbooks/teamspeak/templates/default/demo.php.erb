@@ -37,49 +37,49 @@
 	//ini_set("html_errors", "1");
 	//ini_set("warn_plus_overloading", "1");
 	//================== END OF ERROR REPORTING CODE ======================
-	
+
 	// Load the Teamspeak Display:
 	require("teamspeakdisplay/teamspeakdisplay.php");
-	
+
 	// Get the default settings
 	$settings = $teamspeakDisplay->getDefaultSettings();
-	
+
 	//================== BEGIN OF CONFIGURATION CODE ======================
-	
+
 	// Set the teamspeak server IP or Hostname below (DO NOT INCLUDE THE
 	// PORT NUMBER):
 	$settings["serveraddress"] = "<%= @ts_server %>";
-	
+
 	// If your you use another port than 8767 to connect to your teamspeak
 	// server using a teamspeak client, then uncomment the line below and
 	// set the correct teamspeak port:
 	//$settings["serverudpport"] = 8767;
-	
+
 	// If your teamspeak server uses another query port than 51234, then
 	// uncomment the line below and set the teamspeak query port of your
 	// server (look in the server.ini of your teamspeak server for this
 	// portnumber):
 	//$settings["serverqueryport"] = 51234;
-	
+
 	// If you want to limit the display to only one channel including it's
 	// players and subchannels, uncomment the following line and set the
 	// exact name of the channel. This feature is case-sensitive!
 	//$settings["limitchannel"] = "";
-	
+
 	// If your teamspeak server uses another set of forbidden nickname
 	// characters than "()[]{}" (look in your server.ini for this setting),
 	// then uncomment the following line and set the correct set of
 	// forbidden nickname characters:
 	//$settings["forbiddennicknamechars"] = "()[]{}";
-	
+
 	//================== END OF CONFIGURATION CODE ========================
-	
+
 	// Is the script improperly configured?
 	if ($settings["serveraddress"] == "") { die("You need to configure this script as described inside the CONFIGURATION CODE block in " . $_SERVER["PHP_SELF"] . "<br>\n"); }
-	
+
 	// Display the Teamspeak server
 	$teamspeakDisplay->displayTeamspeakEx($settings);
-	
+
 	// Display autorefresh status and control link:
 	echo("<br>\n");
 	if ($autorefresh == 0) {

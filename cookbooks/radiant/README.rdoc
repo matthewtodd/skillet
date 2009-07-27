@@ -21,7 +21,7 @@ Opscode cookbooks (http://github.com/opscode/cookbooks/tree/master)
 * rails
 * apache2
 
-= ATTRIBUTES: 
+= ATTRIBUTES:
 
 * radiant[:branch] - Branch to deploy from, default HEAD.
 * radiant[:migrate] - Whether to do a database migration, default false.

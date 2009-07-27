@@ -38,8 +38,8 @@ destemail = root@localhost
 #
 
 # Default banning action (e.g. iptables, iptables-new,
-# iptables-multiport, shorewall, etc) It is used to define 
-# action_* variables. Can be overriden globally or per 
+# iptables-multiport, shorewall, etc) It is used to define
+# action_* variables. Can be overriden globally or per
 # section within jail.local file
 banaction = iptables-multiport
 
@@ -58,10 +58,10 @@ action_mw = %(banaction)s[name=%(__name__)s, port="%(port)s"]
 # to the destemail.
 action_mwl = %(banaction)s[name=%(__name__)s, port="%(port)s"]
                mail-whois-lines[name=%(__name__)s, dest="%(destemail)s", logpath=%(logpath)s]
- 
+
 # Choose default action.  To change, just override value of 'action' with the
 # interpolation to the chosen action shortcut (e.g.  action_mw, action_mwl, etc) in jail.local
-# globally (section [DEFAULT]) or per specific section 
+# globally (section [DEFAULT]) or per specific section
 action = %(action_)s
 
 #
@@ -71,7 +71,7 @@ action = %(action_)s
 # Next jails corresponds to the standard configuration in Fail2ban 0.6 which
 # was shipped in Debian. Please enable any defined here jail by including
 #
-# [SECTION_NAME] 
+# [SECTION_NAME]
 # enabled = true
 #
 # in /etc/fail2ban/jail.local.

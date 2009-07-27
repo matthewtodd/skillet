@@ -6,7 +6,7 @@ when "debian","ubuntu"
   nginx[:log_dir] = "/var/log/nginx"
   nginx[:user]    = "www-data"
   nginx[:binary]  = "/usr/sbin/nginx"
-else   
+else
   nginx[:dir]     = "/etc/nginx"
   nginx[:log_dir] = "/var/log/nginx"
   nginx[:user]    = "www-data"

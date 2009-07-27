@@ -14,7 +14,7 @@
   LogLevel info
   ErrorLog <%= @node[:apache][:log_dir] %>/<%= @params[:name] %>-error.log
   CustomLog <%= @node[:apache][:log_dir] %>/<%= @params[:name] %>-access.log combined
-  
+
   SSLEngine On
   SSLCertificateFile /etc/chef/certificates/<%= @node[:chef][:server_fqdn] %>.pem
   SSLCertificateKeyFile /etc/chef/certificates/<%= @node[:chef][:server_fqdn] %>.pem
@@ -36,7 +36,7 @@
   LogLevel info
   ErrorLog <%= @node[:apache][:log_dir] %>/<%= @params[:name] %>-error.log
   CustomLog <%= @node[:apache][:log_dir] %>/<%= @params[:name] %>-access.log combined
-  
+
   SSLEngine On
   SSLCertificateFile /etc/chef/certificates/<%= @node[:chef][:server_fqdn] %>.pem
   SSLCertificateKeyFile /etc/chef/certificates/<%= @node[:chef][:server_fqdn] %>.pem

@@ -10,7 +10,7 @@ Ubuntu 8.10 was primarily used in testing this cookbook. Other Ubuntu versions a
 
 == Recipes:
 
-* openssh 
+* openssh
 * nscd
 
 = ATTRIBUTES:
@@ -19,7 +19,7 @@ Be aware of the attributes used by this cookbook and adjust the defaults for you
 
 == Client node attributes
 
-* openldap[:basedn] - basedn 
+* openldap[:basedn] - basedn
 * openldap[:server] - the LDAP server fully qualified domain name, default 'ldap'.node[:domain].
 
 == Server node attributes
@@ -43,16 +43,16 @@ COOK-128 - set automatically based on openldap[:server] and openldap[:basedn] if
 
 Edit Rakefile variables for SSL certificate.
 
-On client systems, 
+On client systems,
 
   include_recipe "openldap::auth"
-  
+
 This will get the required packages and configuration for client systems. This will be required on server systems as well, so this is a good candidate for inclusion in a site-cookbooks/base.
 
 On server systems, set the server node attributes in the Chef node, or in a JSON attributes file. Include the openldap::server recipe:
 
   include_recipe "openldap::server"
-  
+
 When initially installing a brand new LDAP master server on Ubuntu 8.10, the configuration directory may need to be removed and recreated before slapd will start successfully. Doing this programmatically may cause other issues, so fix the directory manually :-).
 
   $ sudo slaptest -F /etc/ldap/slapd.d
@@ -60,29 +60,29 @@ When initially installing a brand new LDAP master server on Ubuntu 8.10, the con
   => ldif_enum_tree: failed to read entry for /etc/ldap/slapd.d/cn=config/olcDatabase={1}bdb.ldif
   slaptest: bad configuration directory!
 
-Simply remove the configuration, rerun chef-client. For some reason slapd isn't getting started even though the service resource is notified to start, so start it manually. 
+Simply remove the configuration, rerun chef-client. For some reason slapd isn't getting started even though the service resource is notified to start, so start it manually.
 
   $ sudo rm -rf /etc/ldap/slapd.d/ /etc/ldap/slapd.conf
   $ sudo chef-client
   $ sudo /etc/init.d/slapd start
-  
+
 === A note about certificates
 
 Certificates created by the Rakefile are self signed. If you have a purchased CA, that can be used. Be sure to update the certificate locations in the templates as required. We suggest copying this cookbook to the site-cookbooks for such modifications, so you can still pull from our master for updates, and then merge your changes in.
-  
+
 == NEW DIRECTORY:
 
 If installing for the first time, the initial directory needs to be created. Create an ldif file, and start populating the directory.
-  
+
 == PASSWORDS:
 
 Set the password, openldap[:rootpw] for the rootdn in the node's attributes. This should be a password hash generated from slappasswd. The default slappasswd command on Ubuntu 8.10 and Mac OS X 10.5 will generate a SHA1 hash:
 
   $ slappasswd -s "secretsauce"
   {SSHA}6BjlvtSbVCL88li8IorkqMSofkLio58/
-  
-Set this by default in the attributes file, or on the node's entry in the webui.  
-  
+
+Set this by default in the attributes file, or on the node's entry in the webui.
+
 == LICENSE & AUTHOR:
 
 Author:: Joshua Timberman (<joshua@opscode.com>)

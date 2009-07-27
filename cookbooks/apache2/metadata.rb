@@ -69,7 +69,7 @@ attribute "apache/binary",
   :description => "Apache server daemon program",
   :default => "/usr/sbin/apache2"
 
-attribute "apache/icondir", 
+attribute "apache/icondir",
   :display_name => "Apache Icondir",
   :description => "Directory location for icons",
   :default => "/usr/share/apache2/icons"

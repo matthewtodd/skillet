@@ -18,13 +18,13 @@ end
 mongrel_list.each do |mongrel|
   God.watch do |w|
     w.name = mongrel[:name]
-    w.interval = 30.seconds # default      
-    w.start = mongrel[:start] 
+    w.interval = 30.seconds # default
+    w.start = mongrel[:start]
     w.stop = mongrel[:stop]
     w.restart = mongrel[:restart]
     w.start_grace = 10.seconds
     w.restart_grace = 10.seconds
-    w.pid_file = mongrel[:pidfile] 
+    w.pid_file = mongrel[:pidfile]
 
     w.restart_if do |restart|
       restart.condition(:memory_usage) do |c|

@@ -18,7 +18,7 @@ attribute "gem_server/virtual_host_name",
   :display_name => "Gem Server Virtual Hostname",
   :description => "Apache ServerName for the virtual host",
   :default => "gems.domain"
-  
+
 attribute "gem_server/virtual_host_alias",
   :display_name => "Gem Server Virtual Host Aliases",
   :description => "Array of Apache ServerAlias'es",

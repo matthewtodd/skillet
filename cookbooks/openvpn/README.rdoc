@@ -12,9 +12,9 @@ Tested on Ubuntu 8.10, but should work anywhere that has a package for OpenVPN.
 
 No other cookbooks are required.
 
-= ATTRIBUTES: 
+= ATTRIBUTES:
 
-These attributes are set by the cookbook by default. 
+These attributes are set by the cookbook by default.
 
 * openvpn[:local] - IP to listen on, defaults to node[:ipaddress]
 * openvpn[:proto] - Valid values are 'udp' or 'tcp', defaults to 'udp'.
@@ -35,9 +35,9 @@ This cookbook also provides an 'up' script that runs when OpenVPN is started. Th
 Use the rake task from the easy-rsa directory in this cookbook.
 
   cd files/default/easy-rsa
-  . vars 
+  . vars
   rake server
-  
+
 This will create the certificates in files/default/keys.
 
 == Client:
@@ -47,11 +47,11 @@ For security reasons, certificates should be generated on a per-user basis. The 
   cd files/default/easy-rsa
   . vars
   rake client name="username" gateway="vpn_gateway.example.com"
-  
+
 This will create a ZIP file, /tmp/"username".zip. This file should be sent to the user and removed from the server where generated.
 
 = LICENSE and AUTHOR:
-      
+
 Author:: Joshua Timberman (<joshua@opscode.com>)
 
 Copyright:: 2009, Opscode, Inc

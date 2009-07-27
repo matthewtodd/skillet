@@ -12,11 +12,11 @@ Tested on Ubuntu 8.10, should work on other platforms.
 
 Opscode cookbooks, http://github.com/opscode/cookbooks/tree/master:
 
-* ruby 
-* apache2 
-* passenger 
+* ruby
+* apache2
+* passenger
 
-= ATTRIBUTES: 
+= ATTRIBUTES:
 
 * rails[:version] - Install the specified version. Default false (installs latest).
 * rails[:environment] - Set Rails environment. Default production.
@@ -34,7 +34,7 @@ The recommended Rails application deployment method is Passenger and use the Apa
     template "some_rails_app.conf.erb"
   end
 
-We provide an example rails application vhost config file in this cookbook. Remember, for Passenger, DocumentRoot (docroot) needs 'public'. Per the web_app define, other parameters can be passed arbitrarily and used in the template. 
+We provide an example rails application vhost config file in this cookbook. Remember, for Passenger, DocumentRoot (docroot) needs 'public'. Per the web_app define, other parameters can be passed arbitrarily and used in the template.
 
 = LICENSE and AUTHOR:
 

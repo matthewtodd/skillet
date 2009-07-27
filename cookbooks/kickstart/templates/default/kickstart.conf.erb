@@ -1,10 +1,10 @@
 <VirtualHost *:80>
 
   DocumentRoot <%= @docroot %>
-  
+
   ServerName <%= @virtual_host_name %>
   ServerAlias <%= @virtual_host_name.split('.')[0] %>
-  
+
   <Directory />
     Options FollowSymLinks
     AllowOverride None
@@ -16,12 +16,12 @@
 
   <Directory <%= @docroot %>>
     Options Indexes FollowSymLinks MultiViews
-    AllowOverride All 
+    AllowOverride All
     Order allow,deny
     allow from all
   </Directory>
-  
+
   AddOutputFilterByType DEFLATE text/html text/plain text/xml
-  
+
 </VirtualHost>
 

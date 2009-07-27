@@ -6,7 +6,7 @@
   RailsMaxPoolSize <%= @node[:rails][:max_pool_size] %>
   RailsPoolIdleTime 3600
   RailsEnv '<%= @node[:rails][:environment] %>'
-  
+
   LogLevel info
 	ErrorLog      <%= @node[:apache][:log_dir] %>/<%= @params[:name] %>_error.log
 	CustomLog     <%= @node[:apache][:log_dir] %>/<%= @params[:name] %>_access.log combined
@@ -18,7 +18,7 @@
 
 	# Handle maintenance mode
 	RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
-	RewriteCond %{SCRIPT_FILENAME} !maintenance.html  
+	RewriteCond %{SCRIPT_FILENAME} !maintenance.html
 	RewriteRule ^/(.*)$ /system/maintenance.html [L]
 
 	<Directory <%= @params[:docroot] %>>

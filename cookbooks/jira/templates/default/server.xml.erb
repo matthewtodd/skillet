@@ -13,7 +13,7 @@
           <Resource name="jdbc/JiraDS" auth="Container" type="javax.sql.DataSource"
             username="<%= @node[:jira][:database_user] %>"
             password="<%= @node[:jira][:database_password] %>"
-            driverClassName="com.mysql.jdbc.Driver"            
+            driverClassName="com.mysql.jdbc.Driver"
 url="jdbc:<%= @node[:jira][:database] %>://<%= @node[:jira][:database_host] %>/jiradb?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF8"
             maxActive="20" />
 
@@ -76,7 +76,7 @@ url="jdbc:<%= @node[:jira][:database] %>://<%= @node[:jira][:database_host] %>/j
         <!-- To connect to an external web server (typically Apache) -->
         <!-- Define an AJP 1.3 Connector on port 8009 -->
         <!--
-            <Connector port="8009" 
+            <Connector port="8009"
               enableLookups="false" redirectPort="8443" protocol="AJP/1.3" />
         -->
 

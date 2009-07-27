@@ -10,7 +10,7 @@ Tested on Ubuntu 8.10, but adapted from Red Hat Enterprise 5.0 based recipes.
 
 == Cookbooks:
 
-= ATTRIBUTES: 
+= ATTRIBUTES:
 
 * postgresql[:dir] - configuration file location.
 
@@ -19,15 +19,15 @@ Tested on Ubuntu 8.10, but adapted from Red Hat Enterprise 5.0 based recipes.
 For clients:
 
   include_recipe "postgresql::client"
-  
-For server: 
+
+For server:
 
   include_recipe "postgresql::server"
-  
+
 (client is already included by server)
 
 = LICENSE and AUTHOR:
-      
+
 Author:: Joshua Timberman (<joshua@opscode.com>)
 
 Copyright:: 2009, Opscode, Inc

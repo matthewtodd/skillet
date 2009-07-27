@@ -10,7 +10,7 @@ Opscode/cookbooks:
 
 * apache2
 
-= ATTRIBUTES: 
+= ATTRIBUTES:
 
 * kickstart[:rootpw] - set the root password. Use an encrypted string[1].
 

@@ -14,7 +14,7 @@ Opscode cookbooks, http://github.com/opscode/cookbooks/tree/master:
 
 * runit
 
-= ATTRIBUTES: 
+= ATTRIBUTES:
 
 The following are node attributes passed to the template for the runit service.
 
@@ -26,7 +26,7 @@ The following are node attributes passed to the template for the runit service.
 
 Use the define, memcached_instance, to set up a runit service for the named memcached instance.
 
-  memcached_instance "myproj" 
+  memcached_instance "myproj"
 
 = LICENSE and AUTHOR:
 

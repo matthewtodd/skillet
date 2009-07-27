@@ -7,9 +7,9 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -22,7 +22,7 @@ include_recipe "mysql::client"
 case node[:platform]
 when "debian","ubuntu"
   include_recipe "apt"
-  
+
   execute "preseed mysql-server" do
     command "debconf-set-selections /var/cache/local/preseeding/mysql-server.seed"
     action :nothing
@@ -55,22 +55,22 @@ template "/etc/mysql/my.cnf" do
 end
 
 if (node[:ec2] && ! FileTest.directory?(node[:mysql][:ec2_path]))
-  
+
   service "mysql" do
     action :stop
   end
-  
+
   execute "install-mysql" do
     command "mv #{node[:mysql][:datadir]} #{node[:mysql][:ec2_path]}"
     not_if do FileTest.directory?(node[:mysql][:ec2_path]) end
   end
-  
+
   link node[:mysql][:datadir] do
    to node[:mysql][:ec2_path]
   end
-  
+
   service "mysql" do
     action :start
   end
-  
+
 end

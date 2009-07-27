@@ -75,7 +75,7 @@ attribute "chef/server_fqdn",
   :description => "FQDN of the Chef server for Apache vhost and SSL certificate and clients",
   :default => "hostname.domain"
 
-attribute "chef/server_ssl_req", 
+attribute "chef/server_ssl_req",
   :display_name => "Chef Server SSL Request",
   :description => "Data to pass for creating the SSL certificate",
   :default => "/C=US/ST=Several/L=Locality/O=Example/OU=Operations/CN=chef_server_fqdn/emailAddress=ops@domain"

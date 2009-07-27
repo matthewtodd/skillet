@@ -10,7 +10,7 @@ Tested on Ubuntu 8.10.
 
 == Cookbooks:
 
-= ATTRIBUTES: 
+= ATTRIBUTES:
 
 No haproxy-specific attributes are used.
 
@@ -19,7 +19,7 @@ No haproxy-specific attributes are used.
 Update the haproxy.cfg file with listener(s) for your sites/servers.
 
 = LICENSE and AUTHOR:
-      
+
 Author:: Joshua Timberman (<joshua@opscode.com>)
 
 Copyright:: 2009, Opscode, Inc

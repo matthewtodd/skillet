@@ -8,14 +8,14 @@ Installs keepalived and pushes the configuration file out.
 
 Tested on Ubuntu 8.10.
 
-= ATTRIBUTES: 
+= ATTRIBUTES:
 
-= USAGE: 
+= USAGE:
 
 Modify the sample template to suit your environment and configuration requirements.
 
 = LICENSE and AUTHOR:
-      
+
 Author:: Joshua Timberman (<joshua@opscode.com>)
 
 Copyright:: 2009, Opscode, Inc

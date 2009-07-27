@@ -7,9 +7,9 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -34,7 +34,7 @@ end
 
 remote_file "/var/cache/local/preseeding/slapd.seed" do
   source "slapd.seed"
-  mode 0600 
+  mode 0600
   owner "root"
   group "root"
 end
@@ -73,14 +73,14 @@ when "intrepid","jaunty"
     group "openldap"
     action :create
   end
-  
+
   execute "slapd-config-convert" do
     command "slaptest -f #{node[:openldap][:dir]}/slapd.conf -F #{node[:openldap][:dir]}/slapd.d/"
     user "openldap"
     action :nothing
     notifies :start, resources(:service => "slapd"), :immediately
   end
-  
+
   template "#{node[:openldap][:dir]}/slapd.conf" do
     source "slapd.conf.erb"
     mode 0640
@@ -99,7 +99,7 @@ else
       mode 0644
     end
   end
-  
+
   template "#{node[:openldap][:dir]}/slapd.conf" do
     source "slapd.conf.erb"
     mode 0640

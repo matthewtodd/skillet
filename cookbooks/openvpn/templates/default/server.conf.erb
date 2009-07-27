@@ -16,7 +16,7 @@ up /etc/openvpn/server.up.sh
 
 # Keys and certificates.
 ca   /etc/openvpn/keys/ca.crt
-key  /etc/openvpn/keys/server.key # This file should be kept secret. 
+key  /etc/openvpn/keys/server.key # This file should be kept secret.
 cert /etc/openvpn/keys/server.crt
 dh   /etc/openvpn/keys/dh1024.pem
 
@@ -29,7 +29,7 @@ ifconfig-pool-persist /etc/openvpn/ipp.txt
 user nobody
 group nogroup
 
-# avoid accessing certain resources on restart 
+# avoid accessing certain resources on restart
 persist-key
 persist-tun
 

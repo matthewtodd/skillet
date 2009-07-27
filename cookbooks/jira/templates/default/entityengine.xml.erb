@@ -81,7 +81,7 @@ If you not using the 12 preconfigured DBs, you may also need to add your own fie
         2. If using Orion or JBoss you will need to customize the <jndi-jdbc> tag.
            See http://www.atlassian.com/software/jira/docs/latest/servers/
         3. If using Postgres 7.3+ (schema-aware), use:
-               field-type-name="postgres72" 
+               field-type-name="postgres72"
            and:
                schema-name="public"
            in the datasource attribute list below.
@@ -92,7 +92,7 @@ If you not using the 12 preconfigured DBs, you may also need to add your own fie
         5. If not using HSQLDB remove:
              schema-name="PUBLIC"
 
-        PLEASE DO NOT CHANGE the datasource name from 
+        PLEASE DO NOT CHANGE the datasource name from
         defaultDS unless instructed to by Atlassian Support.
 
         PLEASE DO NOT set the use-foreign-key* values to "true" as JIRA does not currently support this.

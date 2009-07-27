@@ -10,7 +10,7 @@ Tested on Ubuntu 8.10.
 
 == Cookbooks:
 
-= ATTRIBUTES: 
+= ATTRIBUTES:
 
 * rsyslog[:log_dir] - specify the directory to store logs (applicable to server only)
 * rsyslog[:server] - specify the remote rsyslog server.
@@ -21,11 +21,11 @@ Tested on Ubuntu 8.10.
 To replace the sysklogd syslog service with rsyslog:
 
   include_recipe "rsyslog"
-  
+
 To set up a client with a remote [r]syslog server:
 
   include_recipe "rsyslog::client"
-  
+
 By default, this cookbook will use TCP so the server should be configured for TCP. This can be done easily with the server recipe:
 
   include_recipe "rsyslog::server"
@@ -37,7 +37,7 @@ Also, the server configuration will set up log_dir for each client, by date. Str
   <%= @log_dir %>/YEAR/MONTH/DAY/HOSTNAME/"logfile"
 
 = LICENSE and AUTHOR:
-      
+
 Author:: Joshua Timberman (<joshua@opscode.com>)
 
 Copyright:: 2009, Opscode, Inc

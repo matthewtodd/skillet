@@ -48,7 +48,7 @@ directory node[:dynomite][:data_dir] do
   group "root"
   mode "0644"
 end
-  
+
 directory "/var/log/dynomite" do
   owner "root"
   group "root"

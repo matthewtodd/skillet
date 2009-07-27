@@ -7,9 +7,9 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -55,7 +55,7 @@ if platform?("centos", "redhat", "fedora", "suse")
     mode 0755
     action :create
   end
-  
+
   remote_file "/usr/local/bin/apache2_module_conf_generate.pl" do
     source "apache2_module_conf_generate.pl"
     mode 0755
@@ -71,25 +71,25 @@ if platform?("centos", "redhat", "fedora", "suse")
       action :create
     end
   end
-    
+
   execute "generate-module-list" do
-    if node[:kernel][:machine] == "x86_64" 
+    if node[:kernel][:machine] == "x86_64"
       libdir = "lib64"
-    else 
+    else
       libdir = "lib"
     end
     command "/usr/local/bin/apache2_module_conf_generate.pl /usr/#{libdir}/httpd/modules /etc/httpd/mods-available"
-    
+
     action :run
   end
-  
+
   %w{a2ensite a2dissite a2enmod a2dismod}.each do |modscript|
     template "/usr/sbin/#{modscript}" do
       source "#{modscript}.erb"
       mode 0755
       owner "root"
       group "root"
-    end  
+    end
   end
 
   # installed by default on centos/rhel, remove in favour of mods-enabled
@@ -101,7 +101,7 @@ if platform?("centos", "redhat", "fedora", "suse")
     action :delete
     backup false
   end
-  
+
   # welcome page moved to the default-site.rb temlate
   file "#{node[:apache][:dir]}/conf.d/welcome.conf" do
     action :delete

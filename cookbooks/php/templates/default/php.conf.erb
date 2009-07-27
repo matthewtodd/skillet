@@ -1,7 +1,7 @@
 <VirtualHost *:80>
 
   DocumentRoot <%= docroot %>
-  
+
 <% if @node[:virtual_host_name] -%>
   ServerName <%= @node[:virtual_host_name] %>
 <% end -%>
@@ -16,10 +16,10 @@
     Options FollowSymLinks
     AllowOverride None
   </Directory>
-  
+
   <Location /server-status>
     SetHandler server-status
-    
+
     Order Deny,Allow
     Deny from all
     Allow from 127.0.0.1
@@ -32,7 +32,7 @@
   RewriteEngine On
   RewriteLog /var/log/apache2/<%= application_name %>-rewrite.log
   RewriteLogLevel 0
-  
+
   <% if canonical_hostname != "false" %>
   RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f
   RewriteCond %{HTTP_HOST}   !^<%= canonical_hostname.gsub(/\./, '\.') %> [NC]
@@ -43,21 +43,21 @@
   RewriteCond %{HTTP_HOST}   !^<%= @node[:hostname].gsub(/\./, '\.') %> [NC]
   RewriteRule ^/(.*)         http://<%= canonical_hostname %>/$1 [L,R=301]
   <% end %>
-  
+
   RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f
   RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
   RewriteCond %{SCRIPT_FILENAME} !maintenance.html
   RewriteRule ^.*$ /system/maintenance.html [L]
 
   RewriteRule ^/server-status$ /server-status$1 [L]
-  
+
   <Directory <%= docroot %>>
     Options Indexes FollowSymLinks MultiViews
-    AllowOverride All 
+    AllowOverride All
     Order allow,deny
     allow from all
   </Directory>
-  
+
   AddOutputFilterByType DEFLATE text/html text/plain text/xml
-  
+
 </VirtualHost>

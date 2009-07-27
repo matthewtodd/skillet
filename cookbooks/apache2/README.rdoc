@@ -6,7 +6,7 @@ Complete Debian/Ubuntu style Apache2 configuration.
 
 Debian or Ubuntu preferred.
 
-Red Hat/CentOS and Fedora can be used but will be converted to a Debian/Ubuntu style Apache as it's far easier to manage with chef. 
+Red Hat/CentOS and Fedora can be used but will be converted to a Debian/Ubuntu style Apache as it's far easier to manage with chef.
 
 = ATTRIBUTES:
 
@@ -42,7 +42,7 @@ We only prototype one parameter for the web_app define, "template". This is used
 * server_name
 * server_aliases
 
-These are available as @params[:docroot], @params[:server_name], @params[:server_aliases] within the template. 
+These are available as @params[:docroot], @params[:server_name], @params[:server_aliases] within the template.
 
 If 'cookbook' and 'template' are not specified, the current cookbook's templates/default/web_app.conf.erb will be used. If this template is not suitable for your application, copy it to your cookbook and customize as needed.
 

@@ -11,11 +11,11 @@ Should work on RHEL and Debian plus derivatives.
 To install just ImageMagick,
 
   include_recipe "imagemagick"
-  
+
 In your own recipe/cookbook. To install the RubyGem rmagick,
 
   include_recipe "imagemagick::rmagick"
-  
+
 Which will install imagemagick, as well as the development libraries for imagemagick (so rmagick can be built).
 
 = LICENSE:

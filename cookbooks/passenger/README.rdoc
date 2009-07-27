@@ -16,7 +16,7 @@ Opscode cookbooks, http://github.com/opscode/cookbooks/tree/master:
 * apache2 (web_app)
 * rails
 
-= ATTRIBUTES: 
+= ATTRIBUTES:
 
 * passenger[:version] - Specify the version of passenger to install.
 * passenger[:root_path] - The location of the passenger gem.
@@ -32,7 +32,7 @@ For example, to run a Rails application on passenger:
 
   include_recipe "rails"
   include_recipe "passenger"
-  
+
   web_app "myproj" do
     docroot "/srv/myproj/public"
     server_name "myproj.#{node[:domain]}"
