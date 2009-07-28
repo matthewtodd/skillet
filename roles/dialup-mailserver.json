@@ -1,0 +1,10 @@
+{
+  "name": "dialup-mailserver",
+  "description": "Configures a satellite mail server with N modems.",
+
+  "default_attributes": {},
+  "override_attributes": {},
+  "recipes": ["postfix", "procmail", "fetchmail"],
+
+  "json_class": "Chef::Role"
+}
