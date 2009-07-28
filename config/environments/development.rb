@@ -8,6 +8,7 @@ end
 Merb::BootLoader.before_app_loads do
   Chef::Config.instance_eval do
     couchdb_url 'http://development_hideabed_api_key:X@localhost:3000'
+    validation_token 'foo'
   end
 end
 
