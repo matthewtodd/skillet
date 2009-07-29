@@ -8,7 +8,7 @@ Hey, wouldn't it be cool to run a Chef server on Heroku?
 
 == Deployment
 
-As a prerequisite, you'll need access to a CouchDB instance somehow somewhere. (As one option, see http://github.com/matthewtodd/hideabed. I hear there's also http://hosting.couch.io.)
+As a prerequisite, you'll need access to a CouchDB instance somehow somewhere. (As one option, see my hideabed[http://github.com/matthewtodd/hideabed]. I hear there's also http://hosting.couch.io.)
 
 I happen to be using Heroku. Here's how you'd deploy there:
 
@@ -34,16 +34,10 @@ You'll need to crank your dynos to 2 so that your Chef clients can register and 
 
 == Notes
 
-It would be great if Heroku supported git submodules. (See http://docs.heroku.com/constraints#git-submodules and http://groups.google.com/group/heroku/browse_thread/thread/5e6807fcd2572f64/bee1a3b581db9c00.) Then we could pull in git://github.com/opscode/cookbooks instead of duplicating it.
+It would be great if Heroku[http://docs.heroku.com/constraints#git-submodules] supported[http://groups.google.com/group/heroku/browse_thread/thread/5e6807fcd2572f64/bee1a3b581db9c00] git submodules. Then we could pull in Opscode's cookbooks[http://github.com/opscode/cookbooks] instead of duplicating them.
 
 I've made a few patches: see config/init.rb and slices/chef-server-slice.
 
 Most notably, I've totally stubbed out Chef::Queue, so there's no search indexing. I don't know if this is a big deal yet.
 
-The rest of the patches are currently being applied to Chef proper:
-
-* http://tickets.opscode.com/browse/CHEF-430
-* http://tickets.opscode.com/browse/CHEF-431
-* http://tickets.opscode.com/browse/CHEF-432
-
-With any luck, they'll be included in the 0.7.6 release! It will be nice, from a cognitive accessibility standpoint, to whack the slices directory as well as the Chef::REST monkey patch in init.rb.
+The rest of the patches (CHEF-430[http://tickets.opscode.com/browse/CHEF-430], CHEF-431[http://tickets.opscode.com/browse/CHEF-431], and CHEF-432[http://tickets.opscode.com/browse/CHEF-432]) are currently being applied to Chef proper. With any luck, they'll be included in the 0.7.6 release! It will be nice, from a cognitive accessibility standpoint, to whack the slices directory as well as the Chef::REST monkey patch in init.rb.
