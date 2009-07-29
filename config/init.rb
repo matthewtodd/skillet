@@ -5,6 +5,7 @@ dependency 'merb-assets',  MERB_GEMS_VERSION
 dependency 'merb-helpers', MERB_GEMS_VERSION
 dependency 'merb-slices',  MERB_GEMS_VERSION
 dependency 'chef-server-slice'
+dependency 'matthewtodd-openid-store-couchdb-chef', :require_as => 'openid-store-couchdb'
 
 use_template_engine :haml
 
