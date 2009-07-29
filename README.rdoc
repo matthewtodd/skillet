@@ -36,7 +36,7 @@ You'll need to crank your dynos to 2 so that your Chef clients can register and 
 
 It would be great if Heroku[http://docs.heroku.com/constraints#git-submodules] supported[http://groups.google.com/group/heroku/browse_thread/thread/5e6807fcd2572f64/bee1a3b581db9c00] git submodules. Then we could pull in Opscode's cookbooks[http://github.com/opscode/cookbooks] instead of duplicating them.
 
-I've made a few patches: see config/init.rb and slices/chef-server-slice.
+I've made a few patches: see config/init.rb[http://github.com/matthewtodd/skillet/blob/master/config/init.rb] and slices/chef-server-slice[http://github.com/matthewtodd/skillet/tree/master/slices/chef-server-slice/app].
 
 Most notably, I've totally stubbed out Chef::Queue, so there's no search indexing. I don't know if this is a big deal yet.
 
