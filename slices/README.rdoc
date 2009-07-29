@@ -1,0 +1,3 @@
+= Slices
+
+These files are here strictly so I can monkey patch over a couple of bugs in chef-server-slice. They'll hopefully get to go away soon.

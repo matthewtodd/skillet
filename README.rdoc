@@ -16,26 +16,27 @@ I happen to be using Heroku. Here's how you'd deploy there:
  cd skillet
  # adjust cookbooks to your liking
  heroku create
- heroku config:add APP_ACCESS_TOKEN=...
- heroku config:add MERB_SESSION_SECRET_KEY=...
- heroku config:add CHEF_AUTHORIZED_OPENID_IDENTIFIERS=...
- heroku config:add CHEF_AUTHORIZED_OPENID_PROVIDERS=...
- heroku config:add CHEF_COUCHDB_URL=...
- heroku config:add CHEF_OPENID_URL=...
+ heroku config:add APP_ACCESS_TOKEN=acbd18db4cc2f85cedef654fccc4a4d8
+ heroku config:add MERB_SESSION_SECRET_KEY=37b51d194a7513e45b56f6524f2d51f2
+ heroku config:add CHEF_AUTHORIZED_OPENID_IDENTIFIERS=one.example.com,two.example.com
+ heroku config:add CHEF_AUTHORIZED_OPENID_PROVIDERS=provider.example.com,another-provider.example.com
+ heroku config:add CHEF_COUCHDB_URL=https://user:pass@couchdb-instance.example.com
+ heroku config:add CHEF_OPENID_URL=https://acbd18db4cc2f85cedef654fccc4a4d8:X@curried-emu-12.heroku.com
+ heroku config:add CHEF_VALIDATION_TOKEN=73feffa4b7f6bb68e44cf984c85f6e88
  heroku addons:add piggyback_ssl
  git push heroku master
 
-Then, assuming your APP_ACCESS_TOKEN is "wilma" and your app is "curried-emu-12", give it a go with
+Then, assuming your APP_ACCESS_TOKEN is "acbd18db4cc2f85cedef654fccc4a4d8" and your app is "curried-emu-12", give it a go with
 
- open https://wilma:X@curried-emu-12.heroku.com
+ open https://acbd18db4cc2f85cedef654fccc4a4d8:X@curried-emu-12.heroku.com
 
-Once you start connecting your Chef clients, you'll need to crank your dynos to 2 so that they can register and authenticate themselves with OpenID.
+You'll need to crank your dynos to 2 so that your Chef clients can register and authenticate themselves with OpenID.
 
 == Notes
 
-It would be great if Heroku supported git submodules. (See http://docs.heroku.com/constraints#git-submodules and http://groups.google.com/group/heroku/browse_thread/thread/5e6807fcd2572f64/bee1a3b581db9c00.) Then we could pull in git://github.com/opscode/cookbooks as cookbooks and our own as site-cookbooks, without duplication.
+It would be great if Heroku supported git submodules. (See http://docs.heroku.com/constraints#git-submodules and http://groups.google.com/group/heroku/browse_thread/thread/5e6807fcd2572f64/bee1a3b581db9c00.) Then we could pull in git://github.com/opscode/cookbooks instead of duplicating it.
 
-I've made a few patches: see config/init.rb, lib/openid/store/couchdb.rb, and slices/chef-server-slice.
+I've made a few patches: see config/init.rb and slices/chef-server-slice.
 
 Most notably, I've totally stubbed out Chef::Queue, so there's no search indexing. I don't know if this is a big deal yet.
 
@@ -45,4 +46,4 @@ The rest of the patches are currently being applied to Chef proper:
 * http://tickets.opscode.com/browse/CHEF-431
 * http://tickets.opscode.com/browse/CHEF-432
 
-With any luck, they'll be included in the 0.7.6 release! It will be nice, from a cognitive accessibility standpoint, to whack the lib and slices directories as well as the Chef::REST monkey patch in init.rb.
+With any luck, they'll be included in the 0.7.6 release! It will be nice, from a cognitive accessibility standpoint, to whack the slices directory as well as the Chef::REST monkey patch in init.rb.

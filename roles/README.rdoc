@@ -1,0 +1,3 @@
+= Roles
+
+You probably won't find these useful for yourself. But, see what you like, and fork at will.
