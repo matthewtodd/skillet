@@ -41,3 +41,11 @@ I've made a few patches: see config/init.rb[http://github.com/matthewtodd/skille
 Most notably, I've totally stubbed out Chef::Queue, so there's no search indexing. I don't know if this is a big deal yet.
 
 The rest of the patches (CHEF-430[http://tickets.opscode.com/browse/CHEF-430], CHEF-431[http://tickets.opscode.com/browse/CHEF-431], and CHEF-432[http://tickets.opscode.com/browse/CHEF-432]) are currently being applied to Chef proper. With any luck, they'll be included in the 0.7.6 release! It will be nice, from a cognitive accessibility standpoint, to whack the slices directory as well as the Chef::REST monkey patch in init.rb.
+
+== Cookbooks
+
+Rather than keep all my separate cookbooks at the top level of the project, I've nested them here.
+
+cookbooks:: A vendored copy of http://github.com/opscode/cookbooks. It's a shame Heroku doesn't support git submodules.
+skillet-cookbooks:: Skillet-specific overrides to the Opscode cookbooks. For now, this just means patching the client.rb config template for chef::client to make it easier to point back to the skillet (chef) server automatically. I feel like it's nicer to keep the skillet-specific overrides separate from my custom site cookbooks, since it makes it easier for you to just blow away "site" and put your own stuff in.
+site-cookbooks:: My own cookbooks, for my own nefarious purposes.

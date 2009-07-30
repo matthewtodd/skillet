@@ -9,14 +9,6 @@ class RequireSSL < Struct.new(:app)
   end
 end
 
-# Useful for our overridden version of the chef::client config file.
-class CaptureHTTPHost < Struct.new(:app)
-  def call(env)
-    ENV['HTTP_HOST'] ||= env['HTTP_HOST']
-    app.call(env)
-  end
-end
-
 unless Merb.environment == 'development'
   use RequireSSL
   use Rack::Auth::Basic do |access_token, _|
@@ -24,6 +16,5 @@ unless Merb.environment == 'development'
   end
 end
 
-use CaptureHTTPHost
 use Merb::Rack::Static, ChefServerSlice.dir_for(:public)
 run Merb::Rack::Application.new
