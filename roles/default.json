@@ -1,0 +1,10 @@
+{
+  "name": "default",
+  "description": "Configures a Chef client.",
+
+  "default_attributes": {},
+  "override_attributes": {},
+  "recipes": ["runit", "chef::client"],
+
+  "json_class": "Chef::Role"
+}
