@@ -1,0 +1,15 @@
+{
+  "name": "satellite-mailserver",
+  "description": "Configures a satellite mail server.",
+
+  "default_attributes": {
+    "postfix": {
+      "mail_type": "client",
+      "smtp_sasl_auth_enable": "yes",
+    }
+  },
+  "override_attributes": {},
+  "recipes": ["postfix", "procmail"],
+
+  "json_class": "Chef::Role"
+}

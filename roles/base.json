@@ -1,5 +1,5 @@
 {
-  "name": "default",
+  "name": "base",
   "description": "Configures a Chef client.",
 
   "default_attributes": {
