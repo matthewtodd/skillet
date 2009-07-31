@@ -2,8 +2,14 @@
   "name": "default",
   "description": "Configures a Chef client.",
 
-  "default_attributes": {},
+  "default_attributes": {
+    "chef": {
+      "client_version": "0.7.4"
+    }
+  },
+
   "override_attributes": {},
+
   "recipes": ["runit", "chef::client"],
 
   "json_class": "Chef::Role"
