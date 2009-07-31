@@ -7,7 +7,8 @@
       "mail_type": "client",
       "smtp_sasl_auth_enable": "yes",
       "smtp_sasl_user_name": "",
-      "smtp_sasl_passwd": ""
+      "smtp_sasl_passwd": "",
+      "inet_interfaces": "all"
     }
   },
   "override_attributes": {},

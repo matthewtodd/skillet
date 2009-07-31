@@ -75,3 +75,7 @@ attribute "postfix/smtp_sasl_passwd",
   :description => "Password for smtp_sasl_user_name",
   :default => ""
 
+attribute "postfix/inet_interfaces",
+  :display_name => "Postfix Network Interfaces",
+  :description => "Network interfaces the system receives mail on."
+  :default => "loopback-only"
