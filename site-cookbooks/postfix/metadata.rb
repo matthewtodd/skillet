@@ -79,3 +79,8 @@ attribute "postfix/inet_interfaces",
   :display_name => "Postfix Network Interfaces",
   :description => "Network interfaces the system receives mail on."
   :default => "loopback-only"
+
+attribute "postfix/smtpd_use_tls",
+  :display_name => "Postfix SMTPD Use TLS?",
+  :description => "Whether SMTPD SASL Auth should use TLS encryption",
+  :default => "yes"

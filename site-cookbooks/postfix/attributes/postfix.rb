@@ -7,6 +7,7 @@ postfix[:myorigin] = "$myhostname" unless postfix.has_key?(:myorigin)
 postfix[:relayhost] = "" unless postfix.has_key?(:relayhost)
 postfix[:mail_relay_networks] = "127.0.0.0/8" unless postfix.has_key?(:mail_relay_networks)
 postfix[:inet_interfaces] = "loopback-only" unless postfix.has_key?(:inet_interfaces)
+postfix[:smtpd_use_tls] = "yes"
 
 postfix[:smtp_sasl_auth_enable] = "no" unless postfix.has_key?(:smtp_sasl_auth_enable)
 

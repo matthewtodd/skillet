@@ -9,7 +9,8 @@
       "smtp_sasl_user_name": "",
       "smtp_sasl_passwd": "",
       "inet_interfaces": "all",
-      "mail_relay_networks": ""
+      "mail_relay_networks": "",
+      "smtpd_use_tls": "no"
     }
   },
   "override_attributes": {},
