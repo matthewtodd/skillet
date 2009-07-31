@@ -4,17 +4,23 @@
 
   "default_attributes": {
     "postfix": {
-      "mail_type": "client",
+      "relayhost": "",
       "smtp_sasl_auth_enable": "yes",
       "smtp_sasl_user_name": "",
       "smtp_sasl_passwd": "",
-      "inet_interfaces": "all",
-      "mail_relay_networks": "",
-      "smtpd_use_tls": "no"
+
+      "smtpd_use_tls": "yes"
     }
   },
-  "override_attributes": {},
+  "override_attributes": {
+    "postfix": {
+      "mail_type": "client",
+      "inet_interfaces": "all",
+      "mail_relay_networks": "",
+    }
+  },
   "recipes": ["postfix", "postfix::sasl_auth"],
 
-  "json_class": "Chef::Role"
+  "json_class": "Chef::Role",
+  "chef_type": "role"
 }

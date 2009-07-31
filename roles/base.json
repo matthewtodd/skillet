@@ -12,5 +12,6 @@
 
   "recipes": ["runit", "chef::client"],
 
-  "json_class": "Chef::Role"
+  "json_class": "Chef::Role",
+  "chef_type": "role"
 }

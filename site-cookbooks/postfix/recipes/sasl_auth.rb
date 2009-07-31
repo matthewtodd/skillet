@@ -38,3 +38,8 @@ template "/etc/postfix/sasl_passwd" do
   notifies :restart, resources(:service => "postfix")
 end
 
+link @node[:postfix][:smtp_tls_cafile] do
+  to '/etc/ssl/certs/ca-certificates.crt'
+  notifies :restart, resources(:service => "postfix")
+  not_if { File.exists?(@node[:postfix][:smtp_tls_cafile]) }
+end
