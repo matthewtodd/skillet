@@ -6,10 +6,12 @@
     "postfix": {
       "mail_type": "client",
       "smtp_sasl_auth_enable": "yes",
+      "smtp_sasl_user_name": "",
+      "smtp_sasl_passwd": ""
     }
   },
   "override_attributes": {},
-  "recipes": ["postfix", "procmail"],
+  "recipes": ["postfix", "postfix::sasl_auth"],
 
   "json_class": "Chef::Role"
 }
