@@ -8,7 +8,8 @@
       "smtp_sasl_auth_enable": "yes",
       "smtp_sasl_user_name": "",
       "smtp_sasl_passwd": "",
-      "inet_interfaces": "all"
+      "inet_interfaces": "all",
+      "mail_relay_networks": ""
     }
   },
   "override_attributes": {},
