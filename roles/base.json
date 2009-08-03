@@ -10,7 +10,7 @@
 
   "override_attributes": {},
 
-  "recipes": ["runit", "chef::client"],
+  "recipes": ["runit", "chef::client", "openssh"],
 
   "json_class": "Chef::Role",
   "chef_type": "role"
