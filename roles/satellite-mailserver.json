@@ -7,8 +7,7 @@
       "relayhost": "",
       "smtp_sasl_auth_enable": "yes",
       "smtp_sasl_user_name": "",
-      "smtp_sasl_passwd": "",
-      "smtpd_use_tls": "yes"
+      "smtp_sasl_passwd": ""
     }
   },
   "override_attributes": {
