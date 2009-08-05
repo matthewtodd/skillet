@@ -14,7 +14,7 @@
   ],
 
   "default_attributes": {
-    "mysql":     { "bind_address": "localhost" },
+    "mysql":     { "bind_address": "127.0.0.1" },
     "passenger": { "version": "2.2.4" },
     "rails":     { "version": "2.3.3" }
   },
