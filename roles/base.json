@@ -2,16 +2,18 @@
   "name": "base",
   "description": "Configures a Chef client.",
 
+  "recipes": [
+    "cdrom",
+    "runit",
+    "chef::client",
+    "openssh"
+  ],
+
   "default_attributes": {
-    "chef": {
-      "client_version": "0.7.4"
-    }
+    "chef": { "client_version": "0.7.4" }
   },
 
   "override_attributes": {},
-
-  "recipes": ["runit", "chef::client", "openssh"],
-
   "json_class": "Chef::Role",
   "chef_type": "role"
 }

@@ -1,0 +1,23 @@
+{
+  "name": "rails-appserver",
+  "description": "Configures a rails app server.",
+
+  "recipes": [
+    "ruby",
+    "apache2",
+    "passenger_apache2::mod_rails",
+    "mysql::server",
+    "rails",
+    "git"
+  ],
+
+  "default_attributes": {
+    "mysql":     { "bind_address": "localhost" },
+    "passenger": { "version": "2.2.4" },
+    "rails":     { "version": "2.3.3" }
+  },
+
+  "override_attributes": {},
+  "json_class": "Chef::Role",
+  "chef_type": "role"
+}

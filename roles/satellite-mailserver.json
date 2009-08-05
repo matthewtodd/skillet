@@ -2,23 +2,13 @@
   "name": "satellite-mailserver",
   "description": "Configures a satellite mail server.",
 
-  "default_attributes": {
-    "postfix": {
-      "relayhost": "",
-      "smtp_sasl_auth_enable": "yes",
-      "smtp_sasl_user_name": "",
-      "smtp_sasl_passwd": ""
-    }
-  },
-  "override_attributes": {
-    "postfix": {
-      "mail_type": "client",
-      "inet_interfaces": "all",
-      "mail_relay_networks": ""
-    }
-  },
-  "recipes": ["postfix", "postfix::sasl_auth"],
+  "recipes": [
+    "hectic"
+  ],
 
+  "default_attributes": {},
+
+  "override_attributes": {},
   "json_class": "Chef::Role",
   "chef_type": "role"
 }
