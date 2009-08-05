@@ -3,7 +3,7 @@ begin
     device node[:cdrom][:device]
   end
 rescue Chef::Exceptions::Exec
-  Chef::Log.info("Could not mount #{node[:cdrom][:mount_point]}.")
+  Chef::Log.debug("Could not mount #{node[:cdrom][:mount_point]}, skipping.")
 else
   # TODO do something with apt to refresh its sense of what's on the cdrom
   # from the command line, this was: `apt-cdrom add` and then re-mounting the cdrom
@@ -30,6 +30,7 @@ else
       end
 
       def install_package(name, version)
+        Chef::Log.info("Installing #{name}-#{version}.gem from #{node[:cdrom][:gems_directory]}")
         run_command(
           :command => "#{gem_binary_path} install #{name}-#{version}.gem --local --quiet --no-rdoc --no-ri",
           :cwd => node[:cdrom][:gems_directory]
