@@ -5,12 +5,12 @@
   "recipes": [
     "packages",
     "ruby",
-    "chef_deploy",
     "apache2",
     "passenger_apache2::mod_rails",
     "mysql::server",
     "rails",
-    "git"
+    "git",
+    "chef_deploy"
   ],
 
   "default_attributes": {
