@@ -29,8 +29,8 @@ else
 
       def install_package(name, version)
         run_command(
-        :command => "#{gem_binary_path} install #{name}-#{version}.gem --local -q --no-rdoc --no-ri",
-        :cwd => node[:cdrom][:gems_directory]
+          :command => "#{gem_binary_path} install #{name}-#{version}.gem --local --quiet --no-rdoc --no-ri",
+          :cwd => node[:cdrom][:gems_directory]
         )
       end
     end
