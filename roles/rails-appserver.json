@@ -4,6 +4,7 @@
 
   "recipes": [
     "ruby",
+    "chef-deploy",
     "apache2",
     "passenger_apache2::mod_rails",
     "mysql::server",

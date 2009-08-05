@@ -1,5 +1,7 @@
 begin
-  mount node[:cdrom][:mount_point]
+  mount node[:cdrom][:mount_point] do
+    device node[:cdrom][:device]
+  end
 rescue Chef::Exceptions::Exec
   Chef::Log.info("Could not mount #{node[:cdrom][:mount_point]}.")
 else

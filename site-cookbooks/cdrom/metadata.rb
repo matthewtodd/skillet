@@ -9,6 +9,11 @@ attribute 'cdrom',
   :description => 'Hash of CDROM attributes',
   :type => 'hash'
 
+attribute 'cdrom/device',
+  :display_name => 'CDROM Device',
+  :description => 'Full path on the system the CDROM device file.',
+  :default => '/dev/scd0'
+
 attribute 'cdrom/mount_point',
   :display_name => 'CDROM Mount Point',
   :description => 'Full path on the system where the CDROM will be mounted.',
