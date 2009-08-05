@@ -3,8 +3,9 @@
   "description": "Configures a rails app server.",
 
   "recipes": [
+    "packages",
     "ruby",
-    "chef-deploy",
+    "chef_deploy",
     "apache2",
     "passenger_apache2::mod_rails",
     "mysql::server",
