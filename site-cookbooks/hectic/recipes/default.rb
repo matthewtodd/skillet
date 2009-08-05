@@ -7,8 +7,10 @@ end
 
 template "#{node[:hectic][:deploy_to]}/shared/config/database.yml" do
   source 'database.yml.erb'
+  user node[:apache][:user]
+  group node[:apache][:user]
+  mode '0600'
   variables node[:hectic][:db]
-  mode '0644'
 end
 
 deploy node[:hectic][:deploy_to] do
@@ -17,6 +19,8 @@ deploy node[:hectic][:deploy_to] do
   migration_command 'rake db:migrate'
   environment node[:hectic][:environment]
   restart_command 'touch tmp/restart.txt'
+  user node[:apache][:user]
+  group node[:apache][:user]
 end
 
 web_app 'hectic' do
