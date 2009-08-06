@@ -20,8 +20,8 @@ template "#{node[:hectic][:deploy_to]}/shared/config/database.yml" do
   group node[:apache][:user]
   mode 0600
   # it seems like attribute files shouldn't reference attributes outside
-  # themselves; but mysql[:server_root_password] will be defined by now
-  variables node[:hectic][:db].merge(:username => 'root', :password => mysql[:server_root_password])
+  # themselves; but node[:mysql][:server_root_password] will be defined by now
+  variables node[:hectic][:db].merge(:username => 'root', :password => node[:mysql][:server_root_password])
 end
 
 deploy node[:hectic][:deploy_to] do

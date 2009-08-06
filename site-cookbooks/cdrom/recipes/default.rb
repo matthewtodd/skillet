@@ -30,7 +30,7 @@ else
       end
 
       def install_package(name, version)
-        Chef::Log.info("Installing #{name}-#{version}.gem from #{node[:cdrom][:gems_directory]}")
+        Chef::Log.debug("Installing #{name}-#{version}.gem from #{node[:cdrom][:gems_directory]}")
         run_command(
           :command => "#{gem_binary_path} install #{name}-#{version}.gem --local --quiet --no-rdoc --no-ri",
           :cwd => node[:cdrom][:gems_directory]
