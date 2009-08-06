@@ -1,7 +1,7 @@
 pam Mash.new unless attribute?('pam')
-pam[:environment] Mash.new unless pam.has_key?(:environment)
+pam[:environment] = Mash.new unless pam.has_key?(:environment)
 pam[:environment][:paths] = [
-  "#{node[:languages][:ruby][:gems_dir]}/bin",
+  "#{languages[:ruby][:gems_dir]}/bin",
   '/usr/local/sbin',
   '/usr/local/bin',
   '/usr/sbin',

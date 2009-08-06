@@ -1,26 +1,15 @@
-include_recipe 'apache2'
-include_recipe 'passenger_apache2::mod_rails'
-include_recipe 'mysql::server'
-include_recipe 'rails'
-include_recipe 'chef_deploy'
-
 execute "create #{node[:hectic][:db][:database]} database" do
   command "/usr/bin/mysqladmin -u root -p#{node[:mysql][:server_root_password]} create #{node[:hectic][:db][:database]}"
   not_if  "/usr/bin/mysqlshow  -u root -p#{node[:mysql][:server_root_password]} | grep #{node[:hectic][:db][:database]}"
 end
 
-directory "#{node[:hectic][:deploy_to]}/releases" do
-  recursive true
-  owner node[:apache][:user]
-  group node[:apache][:user]
-  mode 0755
-end
-
-directory "#{node[:hectic][:deploy_to]}/shared/config" do
-  recursive true
-  owner node[:apache][:user]
-  group node[:apache][:user]
-  mode 0755
+[node[:hectic][:deploy_to], "#{node[:hectic][:deploy_to]}/releases", "#{node[:hectic][:deploy_to]}/shared/config"].each do |path|
+  directory path do
+    recursive true
+    owner node[:apache][:user]
+    group node[:apache][:user]
+    mode 0755
+  end
 end
 
 template "#{node[:hectic][:deploy_to]}/shared/config/database.yml" do
@@ -34,7 +23,7 @@ end
 deploy node[:hectic][:deploy_to] do
   repo 'git://github.com/matthewtodd/hectic.git'
   migrate true
-  migration_command 'rake db:migrate'
+  migration_command "#{node[:languages][:ruby][:gems_dir]}/bin/rake db:migrate"
   environment node[:hectic][:environment]
   restart_command 'touch tmp/restart.txt'
   user node[:apache][:user]
@@ -47,6 +36,7 @@ web_app 'hectic' do
   server_aliases node[:hectic][:server_aliases]
   rails_env node[:hectic][:environment]
   template 'passenger_web_app.conf.erb'
+  cookbook 'passenger_apache2'
 end
 
 # TODO schedule database backups?

@@ -3,8 +3,6 @@ maintainer_email  'matthew.todd@gmail.com'
 license           'Apache 2.0'
 description       'Installs the chef-deploy gem'
 version           '0.1'
-depends           'git'
-depends           'ruby'
 
 attribute 'chef_deploy',
   :display_name => 'Chef Deploy',
