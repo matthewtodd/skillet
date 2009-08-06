@@ -9,6 +9,4 @@ hectic[:revision]       = '' unless hectic.has_key?(:revision)
 hectic[:db] = Mash.new
 hectic[:db][:environment] = hectic[:environment]
 hectic[:db][:database]    = 'hectic'
-hectic[:db][:username]    = 'root'
-hectic[:db][:password]    = mysql[:server_root_password]
 hectic[:db][:socket]      = '/var/run/mysqld/mysqld.sock'
