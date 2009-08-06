@@ -12,7 +12,7 @@ attribute 'hectic',
 attribute 'hectic/server_name',
   :display_name => 'Hectic server name',
   :description => 'Virtual hostname serving the hectic application.',
-  :default => 'node[:fqdn]'
+  :default => 'fqdn'
 
 attribute 'hectic/revision',
   :display_name => 'Hectic revision',

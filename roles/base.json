@@ -3,6 +3,7 @@
   "description": "Configures a Chef client.",
 
   "recipes": [
+    "apparmor",
     "cdrom",
     "pam::environment",
     "runit",

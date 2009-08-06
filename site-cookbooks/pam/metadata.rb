@@ -18,7 +18,7 @@ attribute 'pam/environment/paths',
   :display_name => 'PAM environment paths.',
   :description => 'Components of the PATH environment variable.',
   :default => [
-    "#{node[:languages][:ruby][:gems_dir]}/bin",
+    'gems_dir/bin',
     '/usr/local/sbin',
     '/usr/local/bin',
     '/usr/sbin',

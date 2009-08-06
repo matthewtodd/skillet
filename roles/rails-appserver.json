@@ -9,8 +9,7 @@
     "passenger_apache2::mod_rails",
     "mysql::server",
     "rails",
-    "git",
-    "chef_deploy"
+    "git"
   ],
 
   "default_attributes": {
