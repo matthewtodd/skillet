@@ -1,9 +1,9 @@
-<%= @params[:environment] %>:
+<%= @environment %>:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: <%= @params[:database] %>
+  database: <%= @database %>
   pool: 5
-  username: <%= @params[:username] %>
-  password: <%= @params[:password] %>
-  socket: <%= @params[:socket] %>
+  username: <%= @username %>
+  password: <%= @password %>
+  socket: <%= @socket %>

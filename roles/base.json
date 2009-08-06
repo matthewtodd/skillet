@@ -4,6 +4,7 @@
 
   "recipes": [
     "cdrom",
+    "pam::environment",
     "runit",
     "chef::client",
     "openssh"

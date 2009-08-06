@@ -1,15 +1,33 @@
-require 'chef-deploy'
+include_recipe 'apache2'
+include_recipe 'passenger_apache2::mod_rails'
+include_recipe 'mysql::server'
+include_recipe 'rails'
+include_recipe 'chef_deploy'
 
 execute "create #{node[:hectic][:db][:database]} database" do
   command "/usr/bin/mysqladmin -u root -p#{node[:mysql][:server_root_password]} create #{node[:hectic][:db][:database]}"
-  not_if  "/usr/bin/mysqlshow | grep #{node[:hectic][:db][:database]}"
+  not_if  "/usr/bin/mysqlshow  -u root -p#{node[:mysql][:server_root_password]} | grep #{node[:hectic][:db][:database]}"
+end
+
+directory "#{node[:hectic][:deploy_to]}/releases" do
+  recursive true
+  owner node[:apache][:user]
+  group node[:apache][:user]
+  mode 0755
+end
+
+directory "#{node[:hectic][:deploy_to]}/shared/config" do
+  recursive true
+  owner node[:apache][:user]
+  group node[:apache][:user]
+  mode 0755
 end
 
 template "#{node[:hectic][:deploy_to]}/shared/config/database.yml" do
   source 'database.yml.erb'
-  user node[:apache][:user]
+  owner node[:apache][:user]
   group node[:apache][:user]
-  mode '0600'
+  mode 0600
   variables node[:hectic][:db]
 end
 
