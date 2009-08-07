@@ -27,7 +27,7 @@ end
 deploy node[:hectic][:deploy_to] do
   repo 'git://github.com/matthewtodd/hectic.git'
   migrate true
-  migration_command "#{node[:languages][:ruby][:gems_dir]}/bin/rake db:migrate"
+  migration_command 'rake db:migrate'
   environment node[:hectic][:environment]
   restart_command 'touch tmp/restart.txt'
   user node[:apache][:user]
