@@ -3,6 +3,7 @@
   "description": "Configures a Chef client.",
 
   "recipes": [
+    "apparmor",
     "cdrom",
     "runit",
     "chef::client",
@@ -10,7 +11,10 @@
   ],
 
   "default_attributes": {
-    "chef": { "client_version": "0.7.4" }
+    "chef": {
+      "client_interval": 60,
+      "client_version": "0.7.4"
+    }
   },
 
   "override_attributes": {},
