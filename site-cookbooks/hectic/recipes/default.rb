@@ -45,12 +45,11 @@ web_app 'hectic' do
   server_name node[:hectic][:server_name]
   server_aliases node[:hectic][:server_aliases]
   rails_env node[:hectic][:environment]
-  template 'passenger_web_app.conf.erb'
-  cookbook 'passenger_apache2'
+  template 'hectic_web_app.conf.erb'
 end
 
-apache_site 'default' do
-  action :disable
+apache_site '000-default' do
+  enable false
 end
 
 # TODO schedule database backups?
