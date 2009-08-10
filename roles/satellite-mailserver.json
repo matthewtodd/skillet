@@ -6,7 +6,11 @@
     "hectic"
   ],
 
-  "default_attributes": {},
+  "default_attributes": {
+    "hectic": {
+      "revision": "9949a1a02bbfe7cc40be9b3321a5f61a19c70ec2"
+    }
+  },
 
   "override_attributes": {},
   "json_class": "Chef::Role",

@@ -1,4 +1,5 @@
 require 'chef-deploy'
+require 'pathname'
 
 execute "create #{node[:hectic][:db][:database]} database" do
   command "/usr/bin/mysqladmin -u root -p#{node[:mysql][:server_root_password]} create #{node[:hectic][:db][:database]}"
@@ -26,12 +27,17 @@ end
 
 deploy node[:hectic][:deploy_to] do
   repo 'git://github.com/matthewtodd/hectic.git'
+  revision node[:hectic][:revision]
   migrate true
   migration_command 'rake db:migrate'
   environment node[:hectic][:environment]
   restart_command 'touch tmp/restart.txt'
   user node[:apache][:user]
   group node[:apache][:user]
+
+  current_revision_file = Pathname.new(node[:hectic][:deploy_to]).join('current', 'REVISION')
+  current_revision = current_revision_file.exist? ? current_revision_file.read.strip : 'NEVER DEPLOYED'
+  action (current_revision == node[:hectic][:revision]) ? :nothing : :deploy
 end
 
 web_app 'hectic' do
@@ -41,6 +47,10 @@ web_app 'hectic' do
   rails_env node[:hectic][:environment]
   template 'passenger_web_app.conf.erb'
   cookbook 'passenger_apache2'
+end
+
+apache_site 'default' do
+  action :disable
 end
 
 # TODO schedule database backups?
