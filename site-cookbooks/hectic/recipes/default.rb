@@ -6,7 +6,12 @@ execute "create #{node[:hectic][:db][:database]} database" do
   not_if  "/usr/bin/mysqlshow  -u root -p#{node[:mysql][:server_root_password]} | grep #{node[:hectic][:db][:database]}"
 end
 
-[node[:hectic][:deploy_to], "#{node[:hectic][:deploy_to]}/releases", "#{node[:hectic][:deploy_to]}/shared/config"].each do |path|
+[ "#{node[:hectic][:deploy_to]}",
+  "#{node[:hectic][:deploy_to]}/releases",
+  "#{node[:hectic][:deploy_to]}/shared",
+  "#{node[:hectic][:deploy_to]}/shared/config",
+  "#{node[:hectic][:deploy_to]}/shared/log",
+  "#{node[:hectic][:deploy_to]}/shared/pids"].each do |path|
   directory path do
     recursive true
     owner node[:apache][:user]

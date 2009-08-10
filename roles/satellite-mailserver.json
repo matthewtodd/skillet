@@ -3,7 +3,8 @@
   "description": "Configures a satellite mail server.",
 
   "recipes": [
-    "hectic"
+    "hectic",
+    "postfix"
   ],
 
   "default_attributes": {
