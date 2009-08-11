@@ -1,0 +1,3 @@
+<% @accounts.each do |account| %>
+poll <%= account['pop_server'] %> protocol pop3 username "<%= account[account['pop_login_via'].to_s] %>" password "<%= account['password'] %>" is "<%= account['private_email'] %>" ssl
+<% end %>

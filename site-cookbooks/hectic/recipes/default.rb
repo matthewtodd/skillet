@@ -30,6 +30,12 @@ template "#{node[:hectic][:deploy_to]}/shared/config/database.yml" do
   variables node[:hectic][:db].merge(:username => 'root', :password => node[:mysql][:server_root_password])
 end
 
+# Include gem dependencies here because of a bug in chef-deploy: the code that
+# reads gems.yml references Chef::Exception, but it should be
+# Chef::Exceptions, with an s on the end. And I kind of felt a little weird
+# about the yaml file anyway.
+gem_package 'haml'
+
 deploy node[:hectic][:deploy_to] do
   repo 'git://github.com/matthewtodd/hectic.git'
   revision node[:hectic][:revision]

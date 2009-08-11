@@ -9,9 +9,11 @@ smtpd_tls_security_level = may
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 
 # Outgoing mail
+sender_dependent_relayhost_maps = mysql:/etc/postfix/relay_hosts.cf
 smtp_sasl_auth_enable = yes
-smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_sasl_password_maps = mysql:/etc/postfix/smtp_passwords.cf
 smtp_sasl_security_options = noanonymous
+smtp_tls_CApath = /etc/ssl/certs
 smtp_tls_security_level = encrypt
 smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 
@@ -19,11 +21,17 @@ smtpd_banner = $myhostname ESMTP $mail_name
 biff = no
 append_dot_mydomain = no
 readme_directory = no
-myhostname = <%= @node[:postfix][:myhostname] %>
+myhostname = <%= @node[:hostname] %>
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
-mydestination = <%= @node[:postfix][:myhostname] %>, <%= @node[:hostname] %>, localhost.localdomain, localhost
-relayhost = <%= @node[:postfix][:relayhost] %>
+mydestination = <%= @node[:hostname] %>, localhost.localdomain, localhost
 mailbox_size_limit = 0
 recipient_delimiter = +
 inet_interfaces = all
+
+# Virtual mailboxes
+virtual_mailbox_domains = <%= @virtual_mailbox_domains.map { |domain| "#{domain}.local" }.join(', ') %>
+virtual_mailbox_base = /var/mail/virtual_mailboxes
+virtual_mailbox_maps = mysql:/etc/postfix/virtual_mailboxes.cf
+virtual_uid_maps = static:5000
+virtual_gid_maps = static:5000

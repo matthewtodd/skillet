@@ -4,16 +4,18 @@
 
   "recipes": [
     "hectic",
-    "postfix"
+    "postfix",
+    "fetchmail"
   ],
 
-  "default_attributes": {
+  "default_attributes": {},
+
+  "override_attributes": {
     "hectic": {
-      "revision": "9949a1a02bbfe7cc40be9b3321a5f61a19c70ec2"
+      "revision": "628df3b09545372d7c48d5fe67d049b44027d1d2"
     }
   },
 
-  "override_attributes": {},
   "json_class": "Chef::Role",
   "chef_type": "role"
 }

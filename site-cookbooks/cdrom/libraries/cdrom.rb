@@ -2,8 +2,8 @@ class Chef::Provider::Package::Rubygems < Chef::Provider::Package
   def candidate_version
     return @candidate_version if @candidate_version
 
-    installed_versions = Dir.glob("#{node[:cdrom][:gems_directory]}/#{@new_resource.package_name}-[0-9]*.gem").map do |path|
-      File.basename(path, '.gem').split('-').last
+    installed_versions = ::Dir.glob("#{node[:cdrom][:gems_directory]}/#{@new_resource.package_name}-[0-9]*.gem").map do |path|
+      ::File.basename(path, '.gem').split('-').last
     end
 
     Chef::Log.debug("candidate_version: cdrom-bundled rubygem(s) available: #{installed_versions.inspect}")

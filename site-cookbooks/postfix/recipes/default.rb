@@ -1,33 +1,39 @@
-%w{postfix libsasl2-2 ca-certificates}.each do |pkg|
-  package pkg do
-    action :install
-  end
-end
+package 'postfix'
+package 'postfix-mysql'
+package 'ca-certificates'
 
-service "postfix" do
+service 'postfix' do
   action :enable
 end
 
-%w{main master}.each do |cfg|
-  template "/etc/postfix/#{cfg}.cf" do
-    source "#{cfg}.cf.erb"
+Gem.clear_paths
+require 'mysql'
+
+virtual_mailbox_domains = []
+mysql = Mysql.new('localhost', 'root', node[:mysql][:server_root_password], node[:hectic][:db][:database])
+mysql.query('SELECT * FROM hosts ORDER BY name') do |result|
+  result.each_hash do |hash|
+    virtual_mailbox_domains.push(hash['name'])
+  end
+end
+mysql.close
+
+virtual_mailbox_domains.each do |domain|
+  directory "/var/mail/virtual_mailboxes/#{domain}" do
+    owner 5000
+    group 5000
+    mode 0775
+    action :create
+  end
+end
+
+%w{main master relay_hosts smtp_passwords virtual_mailboxes}.each do |config|
+  template "/etc/postfix/#{config}.cf" do
+    source "#{config}.cf.erb"
+    variables :virtual_mailbox_domains => virtual_mailbox_domains
     owner 'root'
     group 'root'
     mode 0644
     notifies :restart, resources(:service => 'postfix')
   end
-end
-
-execute 'postmap-sasl_passwd' do
-  command 'postmap /etc/postfix/sasl_passwd'
-  action :nothing
-end
-
-template '/etc/postfix/sasl_passwd' do
-  source 'sasl_passwd.erb'
-  owner 'root'
-  group 'root'
-  mode 0400
-  notifies :run, resources(:execute => 'postmap-sasl_passwd')
-  notifies :restart, resources(:service => 'postfix')
 end
