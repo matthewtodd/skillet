@@ -6,7 +6,7 @@ service 'postfix' do
   action :enable
 end
 
-Hectic.base_mailbox_paths.each do |mailbox_path|
+Hectic.base_mailbox_paths(node).each do |mailbox_path|
   directory "#{node[:postfix][:virtual_mailbox_base]}/#{mailbox_path}" do
     owner 5000
     group 5000
@@ -17,7 +17,7 @@ end
 
 template "/etc/postfix/main.cf" do
   source "main.cf.erb"
-  variables :virtual_mailbox_domains => Hectic.local_hostnames
+  variables :virtual_mailbox_domains => Hectic.local_hostnames(node)
   owner 'root'
   group 'root'
   mode 0644

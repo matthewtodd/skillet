@@ -14,7 +14,7 @@ end
 
 template '/etc/fetchmailrc' do
   source 'fetchmailrc.erb'
-  variables :accounts => Hectic.accounts
+  variables :accounts => Hectic.accounts(node)
   owner 'fetchmail'
   group 'nogroup'
   mode 0600
