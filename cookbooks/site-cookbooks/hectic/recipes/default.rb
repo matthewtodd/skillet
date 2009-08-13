@@ -1,9 +1,9 @@
 require 'chef-deploy'
 require 'pathname'
 
-execute "create #{node[:hectic][:db][:database]} database" do
-  command "/usr/bin/mysqladmin -u root -p#{node[:mysql][:server_root_password]} create #{node[:hectic][:db][:database]}"
-  not_if  "/usr/bin/mysqlshow  -u root -p#{node[:mysql][:server_root_password]} | grep #{node[:hectic][:db][:database]}"
+execute "create #{node[:hectic][:database]} database" do
+  command "/usr/bin/mysqladmin -u root -p#{node[:mysql][:server_root_password]} create #{node[:hectic][:database]}"
+  not_if  "/usr/bin/mysqlshow  -u root -p#{node[:mysql][:server_root_password]} | grep #{node[:hectic][:database]}"
 end
 
 [ "#{node[:hectic][:deploy_to]}",
@@ -25,9 +25,7 @@ template "#{node[:hectic][:deploy_to]}/shared/config/database.yml" do
   owner node[:apache][:user]
   group node[:apache][:user]
   mode 0600
-  # it seems like attribute files shouldn't reference attributes outside
-  # themselves; but node[:mysql][:server_root_password] will be defined by now
-  variables node[:hectic][:db].merge(:username => 'root', :password => node[:mysql][:server_root_password])
+  variables Hectic.database_config(node)
 end
 
 # Include gem dependencies here because of a bug in chef-deploy: the code that

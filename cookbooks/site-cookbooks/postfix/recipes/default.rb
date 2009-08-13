@@ -15,8 +15,8 @@ Hectic.base_mailbox_paths(node).each do |mailbox_path|
   end
 end
 
-template "/etc/postfix/main.cf" do
-  source "main.cf.erb"
+template '/etc/postfix/main.cf' do
+  source 'main.cf.erb'
   variables :virtual_mailbox_domains => Hectic.local_hostnames(node)
   owner 'root'
   group 'root'
@@ -24,12 +24,22 @@ template "/etc/postfix/main.cf" do
   notifies :restart, resources(:service => 'postfix')
 end
 
-%w{master relay_hosts smtp_passwords virtual_mailboxes}.each do |config|
+template '/etc/postfix/master.cf' do
+  source 'master.cf.erb'
+  owner 'root'
+  group 'root'
+  mode 0644
+  notifies :restart, resources(:service => 'postfix')
+end
+
+%w{relay_hosts smtp_passwords virtual_mailboxes}.each do |config|
   template "/etc/postfix/#{config}.cf" do
     source "#{config}.cf.erb"
+    variables Hectic.database_config(node)
     owner 'root'
     group 'root'
     mode 0644
     notifies :restart, resources(:service => 'postfix')
   end
 end
+

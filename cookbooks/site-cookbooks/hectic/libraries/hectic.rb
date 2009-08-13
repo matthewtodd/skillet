@@ -14,13 +14,31 @@ class Hectic
     end.uniq
   end
 
+  def self.database_config(node)
+    new(node).database_config
+  end
+
   def self.local_hostnames(node)
     new(node).hosts.map { |host| host['local_name'] }
   end
 
   # And here's the "lower level" interface.
+  #
+  # Note that we assemble all the db config info here instead of in the
+  # attributes file because we depend on MySQL's root password and we don't
+  # know if it will have been set yet. Perhaps it would be far better to
+  # connect to the database as our OWN user, and to add some sort of a
+  # database resource to the MySQL cookbook?
   def initialize(node)
-    @node = node
+    @environment = node[:hectic][:environment]
+    @database    = node[:hectic][:database]
+    @username    = 'root'
+    @password    = node[:mysql][:server_root_password]
+    @socket      = '/var/run/mysqld/mysqld.sock'
+  end
+
+  def database_config
+    { :username => @username, :password => @password, :database => @database, :environment => @environment, :socket => @socket }
   end
 
   def accounts
@@ -37,9 +55,8 @@ class Hectic
     be_sure_we_have_mysql
 
     results = []
-    # FIXME DRY up my usage of hectic db attributes -- see also postfix config files
     begin
-      mysql = Mysql.new('localhost', 'root', @node[:mysql][:server_root_password], @node[:hectic][:db][:database])
+      mysql = Mysql.new('localhost', @username, @password, @database)
       mysql.query(sql) { |rows| rows.each_hash { |row| results.push(row) } }
     ensure
       mysql.close if mysql
