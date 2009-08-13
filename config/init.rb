@@ -15,7 +15,7 @@ end
 
 Merb::BootLoader.before_app_loads do
   Chef::Config.instance_eval do
-    cookbook_path         [Merb.root_path('site-cookbooks'), Merb.root_path('skillet-cookbooks'), Merb.root_path('cookbooks')]
+    cookbook_path         [Merb.root_path('cookbooks', 'site-cookbooks'), Merb.root_path('cookbooks', 'skillet-cookbooks'), Merb.root_path('cookbooks', 'opscode-cookbooks')]
     openid_cstore_couchdb true
     openid_store_couchdb  true
     role_path             Merb.root_path('roles')

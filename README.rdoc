@@ -36,12 +36,4 @@ You'll need to crank your dynos to 2 so that your Chef clients can register and 
 
 It would be great if Heroku[http://docs.heroku.com/constraints#git-submodules] supported[http://groups.google.com/group/heroku/browse_thread/thread/5e6807fcd2572f64/bee1a3b581db9c00] git submodules. Then we could pull in Opscode's cookbooks[http://github.com/opscode/cookbooks] instead of duplicating them.
 
-I've totally stubbed out Chef::Queue, so there's no search indexing. I don't know if this is a big deal yet.
-
-== Cookbooks
-
-Rather than keep all my separate cookbooks at the top level of the project, I've nested them here.
-
-cookbooks:: A vendored copy of http://github.com/opscode/cookbooks. It's a shame Heroku doesn't support git submodules.
-skillet-cookbooks:: Skillet-specific overrides to the Opscode cookbooks. For now, this just means patching the client.rb config template for chef::client to make it easier to point back to the skillet (chef) server automatically. I feel like it's nicer to keep the skillet-specific overrides separate from my custom site cookbooks, since it makes it easier for you to just blow away "site" and put your own stuff in.
-site-cookbooks:: My own cookbooks, for my own nefarious purposes.
+And I've totally stubbed out Chef::Queue, so there's no search indexing. This hasn't been a big deal for me yet, as I'm dealing with a number of single-server environments. But I suppose you could either perform the search indexing in-process, or run it through Heroku's recently-added support for delayed_job. Either way, beware the Heroku constraints[http://docs.heroku.com/constraints#read-only-filesystem] and workarounds[http://docs.heroku.com/full-text-indexing].
