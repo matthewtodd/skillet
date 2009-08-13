@@ -1,3 +1,3 @@
-chef                                  --source http://gems.opscode.com --source http://gems.rubyforge.org
-chef-server-slice                     --source http://gems.opscode.com --source http://gems.rubyforge.org
+chef --version 0.7.8 --source http://gems.opscode.com --source http://gems.rubyforge.org
+chef-server-slice --version 0.7.8 --source http://gems.opscode.com --source http://gems.rubyforge.org
 matthewtodd-openid-store-couchdb-chef --source http://gems.github.com --source http://gems.opscode.com --source http://gems.rubyforge.org
