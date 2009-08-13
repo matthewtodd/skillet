@@ -1,9 +1,9 @@
-== Cookbooks
+= Cookbooks
 
 Rather than keep all my separate cookbooks at the top level of the project, I've nested them here.
 
 opscode-cookbooks:: A vendored copy of http://github.com/opscode/cookbooks. It's a shame Heroku doesn't support git submodules.
-skillet-cookbooks:: Skillet-specific overrides to the Opscode cookbooks. For now, this just means patching the client.rb config template for chef::client to make it easier to point back to the skillet (chef) server automatically. I feel like it's nicer to keep the skillet-specific overrides separate from my custom site cookbooks, since it makes it easier for you to just blow away "site-cookbooks" and put your own stuff in.
+skillet-cookbooks:: Skillet-specific overrides to the Opscode cookbooks. For now, this just means patching the <tt>client.rb</tt> config template for <tt>chef::client</tt> to make it easier to point back to the skillet (chef) server automatically. I feel like it's nicer to keep the skillet-specific overrides separate from my custom site cookbooks, since it makes it easier for you to just blow away <tt>site-cookbooks</tt> and put your own stuff in.
 site-cookbooks:: My own cookbooks, for my own nefarious purposes.
 
-(Note that ChefServerSlice::Application requires[http://github.com/opscode/chef/blob/0.7.8/chef-server-slice/app/controllers/application.rb#L201] cookbooks folders to end with the string "cookbooks", otherwise I wouldn't here.)
+Note that <tt>ChefServerSlice::Application</tt> requires[http://github.com/opscode/chef/blob/0.7.8/chef-server-slice/app/controllers/application.rb#L201] cookbook folder names to end with the string "cookbooks", otherwise I wouldn't here.

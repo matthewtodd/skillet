@@ -4,7 +4,7 @@ An easy-to-deploy standalone Rack app with bundled Chef server and cookbooks.
 
 == Rationale
 
-Hey, wouldn't it be cool to run a Chef server on Heroku?
+Hey, wouldn't it be cool to run a Chef[http://wiki.opscode.com/display/chef] server on Heroku[http://heroku.com]?
 
 == Deployment
 
@@ -26,7 +26,7 @@ I happen to be using Heroku. Here's how you'd deploy there:
  heroku addons:add piggyback_ssl
  git push heroku master
 
-Then, assuming your APP_ACCESS_TOKEN is "acbd18db4cc2f85cedef654fccc4a4d8" and your app is "curried-emu-12", give it a go with
+Then, assuming your <tt>APP_ACCESS_TOKEN</tt> is "acbd18db4cc2f85cedef654fccc4a4d8" and your app is "curried-emu-12", give it a go with
 
  open https://acbd18db4cc2f85cedef654fccc4a4d8:X@curried-emu-12.heroku.com
 
@@ -34,6 +34,6 @@ You'll need to crank your dynos to 2 so that your Chef clients can register and 
 
 == Notes
 
-It would be great if Heroku[http://docs.heroku.com/constraints#git-submodules] supported[http://groups.google.com/group/heroku/browse_thread/thread/5e6807fcd2572f64/bee1a3b581db9c00] git submodules. Then we could pull in Opscode's cookbooks[http://github.com/opscode/cookbooks] instead of duplicating them.
+It would be great if Heroku supported[http://docs.heroku.com/constraints#git-submodules] git submodules[http://groups.google.com/group/heroku/browse_thread/thread/5e6807fcd2572f64/bee1a3b581db9c00]. Then we could pull in Opscode's cookbooks[http://github.com/opscode/cookbooks] instead of duplicating them.
 
-And I've totally stubbed out Chef::Queue, so there's no search indexing. This hasn't been a big deal for me yet, as I'm dealing with a number of single-server environments. But I suppose you could either perform the search indexing in-process, or run it through Heroku's recently-added support for delayed_job. Either way, beware the Heroku constraints[http://docs.heroku.com/constraints#read-only-filesystem] and workarounds[http://docs.heroku.com/full-text-indexing].
+I've totally stubbed out <tt>Chef::Queue</tt>, so there's no search indexing. This hasn't been a big deal for me yet, as I'm dealing with a number of single-server environments. But I suppose you could either perform the search indexing in-process, or run it through Heroku's recently-added[http://blog.heroku.com/archives/2009/7/15/background_jobs_with_dj_on_heroku/] support for <tt>Delayed::Job</tt>. Either way, beware the Heroku constraints[http://docs.heroku.com/constraints#read-only-filesystem] and workarounds[http://docs.heroku.com/full-text-indexing].
