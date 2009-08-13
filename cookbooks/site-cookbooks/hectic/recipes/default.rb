@@ -1,31 +1,19 @@
 require 'chef-deploy'
 require 'pathname'
 
-execute "create #{node[:hectic][:database]} database" do
-  command "/usr/bin/mysqladmin -u root -p#{node[:mysql][:server_root_password]} create #{node[:hectic][:database]}"
-  not_if  "/usr/bin/mysqlshow  -u root -p#{node[:mysql][:server_root_password]} | grep #{node[:hectic][:database]}"
+mysql_database node[:hectic][:db][:database] do
+  username node[:hectic][:db][:username]
+  password node[:hectic][:db][:password]
 end
 
-[ "#{node[:hectic][:deploy_to]}",
-  "#{node[:hectic][:deploy_to]}/releases",
-  "#{node[:hectic][:deploy_to]}/shared",
-  "#{node[:hectic][:deploy_to]}/shared/config",
-  "#{node[:hectic][:deploy_to]}/shared/log",
-  "#{node[:hectic][:deploy_to]}/shared/pids"].each do |path|
-  directory path do
-    recursive true
-    owner node[:apache][:user]
-    group node[:apache][:user]
-    mode 0755
-  end
-end
+# FIXME Chef::Resource::Template will only accept a Hash, not a Chef::Node::Attribute
+database_configuration_hash = Hash.new
+node[:hectic][:db].each_attribute { |k,v| database_configuration_hash[k]=v }
 
-template "#{node[:hectic][:deploy_to]}/shared/config/database.yml" do
-  source 'database.yml.erb'
+capistrano_deployment_structure node[:hectic][:deploy_to] do
   owner node[:apache][:user]
-  group node[:apache][:user]
-  mode 0600
-  variables Hectic.database_config(node)
+  group node[:apache][:user] # FIXME should this be :group?
+  database_configuration database_configuration_hash
 end
 
 # Include gem dependencies here because of a bug in chef-deploy: the code that

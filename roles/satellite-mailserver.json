@@ -9,12 +9,7 @@
   ],
 
   "default_attributes": {},
-
-  "override_attributes": {
-    "hectic": {
-      "revision": "8cf90bf55b3cc96bcc28ddf36ef82fda04c516e5"
-    }
-  },
+  "override_attributes": {},
 
   "json_class": "Chef::Role",
   "chef_type": "role"

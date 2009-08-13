@@ -6,16 +6,12 @@ class Hectic
 
   def self.base_mailbox_paths(node)
     new(node).accounts.map { |account| account['mailbox_path'] }.map do |mailbox_path|
-      if mailbox_path.ends_with?('/')
+      if mailbox_path.end_with?('/')
         mailbox_path
       else
-        ::File.basename(mailbox_path)
+        ::File.dirname(mailbox_path)
       end
     end.uniq
-  end
-
-  def self.database_config(node)
-    new(node).database_config
   end
 
   def self.local_hostnames(node)
@@ -30,15 +26,7 @@ class Hectic
   # connect to the database as our OWN user, and to add some sort of a
   # database resource to the MySQL cookbook?
   def initialize(node)
-    @environment = node[:hectic][:environment]
-    @database    = node[:hectic][:database]
-    @username    = 'root'
-    @password    = node[:mysql][:server_root_password]
-    @socket      = '/var/run/mysqld/mysqld.sock'
-  end
-
-  def database_config
-    { :username => @username, :password => @password, :database => @database, :environment => @environment, :socket => @socket }
+    @database_config = node[:hectic][:db]
   end
 
   def accounts
@@ -56,7 +44,7 @@ class Hectic
 
     results = []
     begin
-      mysql = Mysql.new('localhost', @username, @password, @database)
+      mysql = Mysql.new('localhost', @database_config[:username], @database_config[:password], @database_config[:database])
       mysql.query(sql) { |rows| rows.each_hash { |row| results.push(row) } }
     ensure
       mysql.close if mysql
