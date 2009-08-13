@@ -30,8 +30,8 @@ recipient_delimiter = +
 inet_interfaces = all
 
 # Virtual mailboxes
-virtual_mailbox_domains = <%= @virtual_mailbox_domains.map { |domain| "#{domain}.local" }.join(', ') %>
-virtual_mailbox_base = /var/mail/virtual_mailboxes
+virtual_mailbox_domains = <%= @virtual_mailbox_domains %>
+virtual_mailbox_base = <%= @node[:postfix][:virtual_mailbox_base] %>
 virtual_mailbox_maps = mysql:/etc/postfix/virtual_mailboxes.cf
 virtual_uid_maps = static:5000
 virtual_gid_maps = static:5000
