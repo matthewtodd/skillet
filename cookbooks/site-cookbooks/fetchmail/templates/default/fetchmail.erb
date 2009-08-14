@@ -8,4 +8,4 @@
 # OPTIONS=...
 
 # Declare here if we want to start fetchmail. 'yes' or 'no'
-START_DAEMON=yes
+START_DAEMON=<%= Hectic.accounts(@node).empty? ? 'no' : 'yes' %>

@@ -46,6 +46,15 @@ class Hectic
     begin
       mysql = Mysql.new('localhost', @database_config[:username], @database_config[:password], @database_config[:database])
       mysql.query(sql) { |rows| rows.each_hash { |row| results.push(row) } }
+    rescue Mysql::Error => error
+      # FIXME the only reason I'm catching errors here is because the Postfix
+      # (and other?) recipes try to read the Hectic database without a
+      # guarantee that the database exists or that the hectic user has
+      # permission to access it. For now, the best we can do is return
+      # nothing. But maybe it would be better to restructure those other
+      # recipes so that they play nicer. (Especially since it's no good to
+      # just blindly swallow this exception.)
+      Chef::Log.error(error)
     ensure
       mysql.close if mysql
     end
