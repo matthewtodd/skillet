@@ -3,7 +3,7 @@
   "description": "Configures a Chef client.",
 
   "recipes": [
-    "cdrom",
+    "local_rubygems",
     "runit",
     "chef::client",
     "openssh"
