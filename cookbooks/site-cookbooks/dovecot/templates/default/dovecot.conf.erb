@@ -1,0 +1,31 @@
+protocols = pop3
+ssl_disable = yes
+disable_plaintext_auth = no
+log_timestamp = "%Y-%m-%d %H:%M:%S "
+mail_uid = nobody
+mail_gid = nogroup
+mail_privileged_group = mail
+
+protocol pop3 {
+  pop3_client_workarounds = outlook-no-nuls oe-ns-eoh
+}
+
+auth default {
+  mechanisms = plain
+
+  passdb sql {
+    args = /etc/dovecot/dovecot-sql.conf
+  }
+
+  passdb sql {
+    args = /etc/dovecot/dovecot-sql-no-domain.conf
+  }
+
+  userdb sql {
+    args = /etc/dovecot/dovecot-sql.conf
+  }
+
+  userdb sql {
+    args = /etc/dovecot/dovecot-sql-no-domain.conf
+  }
+}

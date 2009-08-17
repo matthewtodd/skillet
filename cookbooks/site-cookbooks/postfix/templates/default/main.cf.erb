@@ -34,5 +34,5 @@ inet_interfaces = all
 virtual_mailbox_domains = <%= @virtual_mailbox_domains %>
 virtual_mailbox_base = <%= @node[:postfix][:virtual_mailbox_base] %>
 virtual_mailbox_maps = mysql:/etc/postfix/virtual_mailboxes.cf
-virtual_uid_maps = static:5000
-virtual_gid_maps = static:5000
+virtual_uid_maps = static:<%= Etc.getpwnam('nobody').uid %>
+virtual_gid_maps = static:<%= Etc.getgrnam('nogroup').gid %>

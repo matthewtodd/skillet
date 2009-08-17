@@ -6,10 +6,11 @@ service 'postfix' do
   action :enable
 end
 
+
 Hectic.base_mailbox_paths(node).each do |mailbox_path|
   directory "#{node[:postfix][:virtual_mailbox_base]}/#{mailbox_path}" do
-    owner 5000
-    group 5000
+    owner 'nobody'
+    group 'nogroup'
     mode 0775
     recursive true
     action :create
