@@ -47,3 +47,5 @@ node[:hectic][:db].each_attribute { |k,v| database_configuration_hash[k]=v }
     notifies :restart, resources(:service => 'postfix')
   end
 end
+
+rsnapshot_backup '/var/mail'

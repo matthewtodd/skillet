@@ -6,7 +6,8 @@
     "local_rubygems",
     "runit",
     "chef::client",
-    "openssh"
+    "openssh",
+    "rsnapshot"
   ],
 
   "default_attributes": {

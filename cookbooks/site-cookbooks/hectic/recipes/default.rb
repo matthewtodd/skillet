@@ -6,6 +6,11 @@ mysql_database node[:hectic][:db][:database] do
   password node[:hectic][:db][:password]
 end
 
+rsnapshot_backup_mysql_database node[:hectic][:db][:database] do
+  username node[:hectic][:db][:username]
+  password node[:hectic][:db][:password]
+end
+
 # FIXME Chef::Resource::Template will only accept a Hash, not a Chef::Node::Attribute
 database_configuration_hash = Hash.new
 node[:hectic][:db].each_attribute { |k,v| database_configuration_hash[k]=v }
