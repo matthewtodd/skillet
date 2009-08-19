@@ -1,0 +1,5 @@
+maintainer        'Matthew Todd'
+maintainer_email  'matthew.todd@gmail.com'
+license           'Apache 2.0'
+description       'Configures mgetty for dialup access.'
+version           '0.1'
