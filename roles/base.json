@@ -4,19 +4,11 @@
 
   "recipes": [
     "local_rubygems",
-    "runit",
-    "chef::client",
     "openssh",
     "rsnapshot"
   ],
 
-  "default_attributes": {
-    "chef": {
-      "client_interval": 60,
-      "client_version": "0.7.8"
-    }
-  },
-
+  "default_attributes": {},
   "override_attributes": {},
   "json_class": "Chef::Role",
   "chef_type": "role"
