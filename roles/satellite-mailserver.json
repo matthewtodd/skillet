@@ -5,7 +5,9 @@
   "recipes": [
     "hectic",
     "postfix",
-    "fetchmail"
+    "fetchmail",
+    "pppd",
+    "mgetty"
   ],
 
   "default_attributes": {},
