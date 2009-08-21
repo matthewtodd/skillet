@@ -13,6 +13,11 @@
     AllowOverride None
     Order allow,deny
     Allow from all
+
+    AuthType Basic
+    AuthName "Hectic Account Management App"
+    AuthUserFile <%= @params[:server_password_file] %>
+    Require user <%= @params[:server_username] %>
   </Directory>
 
   LogLevel info

@@ -19,12 +19,6 @@ class Hectic
   end
 
   # And here's the "lower level" interface.
-  #
-  # Note that we assemble all the db config info here instead of in the
-  # attributes file because we depend on MySQL's root password and we don't
-  # know if it will have been set yet. Perhaps it would be far better to
-  # connect to the database as our OWN user, and to add some sort of a
-  # database resource to the MySQL cookbook?
   def initialize(node)
     @database_config = node[:hectic][:db]
   end
@@ -52,8 +46,7 @@ class Hectic
       # guarantee that the database exists or that the hectic user has
       # permission to access it. For now, the best we can do is return
       # nothing. But maybe it would be better to restructure those other
-      # recipes so that they play nicer. (Especially since it's no good to
-      # just blindly swallow this exception.)
+      # recipes so that they play nicer.
       Chef::Log.error(error)
     ensure
       mysql.close if mysql

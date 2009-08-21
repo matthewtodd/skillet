@@ -37,15 +37,25 @@ deploy node[:hectic][:deploy_to] do
   user node[:apache][:user]
   group node[:apache][:user]
 
-  current_revision_file = Pathname.new(node[:hectic][:deploy_to]).join('current', 'REVISION')
-  current_revision = current_revision_file.exist? ? current_revision_file.read.strip : 'NEVER DEPLOYED'
-  action (current_revision == node[:hectic][:revision]) ? :nothing : :deploy
+  current_revision = Pathname.new(node[:hectic][:deploy_to]).join('current', 'REVISION')
+  if current_revision.exist? && current_revision.read.strip == node[:hectic][:revision]
+    action :nothing
+  else
+    action :deploy
+  end
+end
+
+template node[:hectic][:server_password_file] do
+  source 'htpasswd.erb'
+  variables :username => node[:hectic][:server_username], :password => node[:hectic][:server_password]
 end
 
 web_app 'hectic' do
   docroot "#{node[:hectic][:deploy_to]}/current/public"
   server_name node[:hectic][:server_name]
   server_aliases node[:hectic][:server_aliases]
+  server_username node[:hectic][:server_username]
+  server_password_file node[:hectic][:server_password_file]
   rails_env node[:hectic][:environment]
   template 'hectic_web_app.conf.erb'
 end
@@ -53,5 +63,3 @@ end
 apache_site '000-default' do
   enable false
 end
-
-# TODO schedule database backups?
