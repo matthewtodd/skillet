@@ -17,7 +17,7 @@ node[:hectic][:db].each_attribute { |k,v| database_configuration_hash[k]=v }
 
 capistrano_deployment_structure node[:hectic][:deploy_to] do
   owner node[:apache][:user]
-  group node[:apache][:user] # FIXME should this be :group?
+  group node[:apache][:user]
   database_configuration database_configuration_hash
 end
 
@@ -62,4 +62,12 @@ end
 
 apache_site '000-default' do
   enable false
+end
+
+template '/etc/logrotate.d/hectic' do
+  source 'logrotate-hectic.erb'
+  variables :base => node[:hectic][:deploy_to]
+  owner 'root'
+  group 'root'
+  mode 0644
 end
