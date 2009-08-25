@@ -1,0 +1,16 @@
+[global]
+  workgroup = <%= @node[:samba][:workgroup] %>
+  netbios name = <%= @node[:samba][:name] %>
+  interfaces = <%= @node[:samba][:interfaces].join(' ') %>
+  bind interfaces only = yes
+  syslog only = yes
+
+[samba]
+  comment = Samba
+  path = <%= @node[:samba][:path] %>
+  force user = <%= @node[:samba][:user] %>
+  force group = <%= @node[:samba][:group] %>
+  veto files = /*.inf/*.Inf/*.INF/*.lnk/
+  writable = yes
+  guest ok = no
+  valid users = samba

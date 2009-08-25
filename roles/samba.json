@@ -1,16 +1,14 @@
 {
-  "name": "base",
-  "description": "Configures a Chef client.",
+  "name": "samba",
+  "description": "Configures a basic Samba server.",
 
   "recipes": [
-    "extensions",
-    "local_rubygems",
-    "openssh",
-    "rsnapshot"
+    "samba"
   ],
 
   "default_attributes": {},
   "override_attributes": {},
+
   "json_class": "Chef::Role",
   "chef_type": "role"
 }
