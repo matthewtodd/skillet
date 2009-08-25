@@ -1,6 +1,6 @@
 {
-  "name": "satellite-mailserver",
-  "description": "Configures a satellite mail server.",
+  "name": "dialup-mail",
+  "description": "Configures a dialup mail server.",
 
   "recipes": [
     "hectic",

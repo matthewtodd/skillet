@@ -1,5 +1,5 @@
 {
-  "name": "rails-appserver",
+  "name": "application",
   "description": "Configures a rails app server.",
 
   "recipes": [

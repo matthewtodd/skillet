@@ -1,0 +1,14 @@
+{
+  "name": "vnc",
+  "description": "Configures simple VNC ability.",
+
+  "recipes": [
+    "vnc"
+  ],
+
+  "default_attributes": {},
+  "override_attributes": {},
+
+  "json_class": "Chef::Role",
+  "chef_type": "role"
+}
