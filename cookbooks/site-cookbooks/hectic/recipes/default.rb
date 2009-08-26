@@ -48,6 +48,9 @@ end
 template node[:hectic][:server_password_file] do
   source 'htpasswd.erb'
   variables :username => node[:hectic][:server_username], :password => node[:hectic][:server_password]
+  owner node[:apache][:user]
+  group node[:apache][:user]
+  mode 0600
 end
 
 web_app 'hectic' do
