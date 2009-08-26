@@ -6,6 +6,7 @@
     "hectic",
     "postfix",
     "fetchmail",
+    "dovecot",
     "pppd",
     "mgetty"
   ],
