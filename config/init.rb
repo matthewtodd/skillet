@@ -1,7 +1,7 @@
-MERB_GEMS_VERSION = '1.0.11'
+MERB_GEMS_VERSION = '> 1.0'
 CHEF_GEMS_VERSION = '0.7.8'
 
-dependency 'merb-core',         MERB_GEMS_VERSION
+# dependency 'merb-core',         MERB_GEMS_VERSION
 dependency 'merb-assets',       MERB_GEMS_VERSION
 dependency 'merb-helpers',      MERB_GEMS_VERSION
 dependency 'merb-slices',       MERB_GEMS_VERSION
