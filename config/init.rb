@@ -1,12 +1,10 @@
-MERB_GEMS_VERSION = '> 1.0'
-CHEF_GEMS_VERSION = '0.7.8'
+require 'merb-assets'
+require 'merb-helpers'
+require 'merb-slices'
+require 'chef-server-slice'
 
-# dependency 'merb-core',         MERB_GEMS_VERSION
-dependency 'merb-assets',       MERB_GEMS_VERSION
-dependency 'merb-helpers',      MERB_GEMS_VERSION
-dependency 'merb-slices',       MERB_GEMS_VERSION
-dependency 'chef-server-slice', CHEF_GEMS_VERSION
-dependency 'matthewtodd-openid-store-couchdb-chef', :require_as => 'openid-store-couchdb'
+gem 'matthewtodd-openid-store-couchdb-chef'
+require 'openid-store-couchdb'
 
 use_template_engine :haml
 

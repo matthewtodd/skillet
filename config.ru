@@ -9,8 +9,6 @@
 require 'rubygems'
 require 'merb-core'
 
-puts Gem::SourceIndex.from_installed_gems.map { |e| e.first }.sort
-
 Merb::Config.setup(:environment => ENV['RACK_ENV'])
 Merb::BootLoader.run
 eval File.read(Merb.dir_for(:config) / 'rack.rb')
