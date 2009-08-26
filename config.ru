@@ -7,6 +7,7 @@
 # (See config/environments/development.rb.)
 #
 require 'rubygems'
+gem 'merb-core', '1.0.11'
 require 'merb-core'
 
 Merb::Config.setup(:environment => ENV['RACK_ENV'])

@@ -1,6 +1,8 @@
-require 'merb-assets'
-require 'merb-helpers'
-require 'merb-slices'
+%w[merb-assets merb-helpers merb-slices].each do |merb_gem|
+  gem merb_gem, '1.0.11'
+  require merb_gem
+end
+
 require 'chef-server-slice'
 
 gem 'matthewtodd-openid-store-couchdb-chef'
