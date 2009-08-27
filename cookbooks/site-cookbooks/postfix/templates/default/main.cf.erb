@@ -26,7 +26,7 @@ readme_directory = no
 myhostname = <%= @node[:hostname] %>
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
-mydestination = <%= @node[:hostname] %>, localhost.localdomain, localhost
+mydestination = <%= @node[:fqdn] %>, <%= @node[:hostname] %>, localhost.localdomain, localhost
 mailbox_size_limit = 0
 recipient_delimiter = +
 inet_interfaces = all

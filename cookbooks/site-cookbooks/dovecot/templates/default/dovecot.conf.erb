@@ -21,11 +21,18 @@ auth default {
     args = /etc/dovecot/dovecot-sql-no-domain.conf
   }
 
+  passdb pam {
+    args = dovecot
+  }
+
   userdb sql {
     args = /etc/dovecot/dovecot-sql.conf
   }
 
   userdb sql {
     args = /etc/dovecot/dovecot-sql-no-domain.conf
+  }
+
+  userdb passwd {
   }
 }
