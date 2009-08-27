@@ -1,0 +1,5 @@
+postmaster: root
+
+<% unless @node[:postfix][:root_mail_to].empty? %>
+root: <%= @node[:postfix][:root_mail_to] %>
+<% end %>

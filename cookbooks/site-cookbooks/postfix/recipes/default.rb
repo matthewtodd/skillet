@@ -33,6 +33,19 @@ template '/etc/postfix/master.cf' do
   notifies :restart, resources(:service => 'postfix')
 end
 
+execute 'newaliases' do
+  command '/usr/bin/newaliases'
+  action :nothing
+end
+
+template '/etc/aliases' do
+  source 'aliases.erb'
+  owner 'root'
+  group 'root'
+  mode 0644
+  notifies :run, resources(:execute => 'newaliases')
+end
+
 # FIXME Chef::Resource::Template will only accept a Hash, not a Chef::Node::Attribute
 database_configuration_hash = Hash.new
 node[:hectic][:db].each_attribute { |k,v| database_configuration_hash[k]=v }
