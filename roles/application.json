@@ -13,7 +13,7 @@
   ],
 
   "default_attributes": {
-    "apache":    { "listen_ports": [80] }
+    "apache":    { "listen_ports": [80] },
     "mysql":     { "bind_address": "127.0.0.1" },
     "passenger": { "version": "2.2.4" },
     "rails":     { "version": "2.3.3" }

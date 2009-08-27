@@ -3,9 +3,10 @@
 # Uncomment the following if you don't want localized log messages
 # export LC_ALL=C
 
-# If you want to specify any additional OPTION to the start
-# scripts specify them here
-# OPTIONS=...
+# I wanted to say --daemon instead of -d for better readability here, but
+# /etc/init.d/fetchmail actually greps for /-d [[:digit:]]+/ to see if it
+# should add the daemon interval itself.
+OPTIONS='-d <%= @node[:fetchmail][:interval] %> --timeout <%= @node[:fetchmail][:timeout] %> --postmaster postmaster'
 
 # Declare here if we want to start fetchmail. 'yes' or 'no'
 START_DAEMON=<%= Hectic.accounts(@node).empty? ? 'no' : 'yes' %>
