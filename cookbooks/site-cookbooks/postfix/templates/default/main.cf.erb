@@ -9,9 +9,10 @@ smtpd_tls_security_level = may
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 
 # Outgoing mail
+relayhost = <%= @node[:postfix][:default_relayhost] %>
 sender_dependent_relayhost_maps = mysql:/etc/postfix/relay_hosts.cf
 smtp_sasl_auth_enable = yes
-smtp_sasl_password_maps = mysql:/etc/postfix/smtp_passwords.cf
+smtp_sasl_password_maps = mysql:/etc/postfix/smtp_passwords.cf, hash:/etc/postfix/default_smtp_passwords
 smtp_sasl_security_options = noanonymous
 smtp_sender_dependent_authentication = yes
 smtp_tls_CApath = /etc/ssl/certs

@@ -44,6 +44,21 @@ template '/etc/aliases' do
   group 'root'
   mode 0644
   notifies :run, resources(:execute => 'newaliases')
+  notifies :restart, resources(:service => 'postfix')
+end
+
+execute 'postmap-default_smtp_passwords' do
+  command 'postmap /etc/postfix/default_smtp_passwords'
+  action :nothing
+end
+
+template '/etc/postfix/default_smtp_passwords' do
+  source 'default_smtp_passwords.erb'
+  owner 'root'
+  group 'root'
+  mode 0400
+  notifies :run, resources(:execute => 'postmap-default_smtp_passwords')
+  notifies :restart, resources(:service => 'postfix')
 end
 
 # FIXME Chef::Resource::Template will only accept a Hash, not a Chef::Node::Attribute
