@@ -52,13 +52,24 @@ execute 'postmap-default_smtp_passwords' do
   action :nothing
 end
 
+file '/etc/postfix/default_smtp_passwords.db' do
+  action :nothing
+end
+
 template '/etc/postfix/default_smtp_passwords' do
   source 'default_smtp_passwords.erb'
   owner 'root'
   group 'root'
   mode 0400
-  notifies :run, resources(:execute => 'postmap-default_smtp_passwords')
-  notifies :restart, resources(:service => 'postfix')
+
+  if node[:postfix][:default_relayhost].empty?
+    action :delete
+    notifies :delete, resources(:file => '/etc/postfix/default_smtp_passwords.db')
+  else
+    action :create
+    notifies :run, resources(:execute => 'postmap-default_smtp_passwords')
+    notifies :restart, resources(:service => 'postfix')
+  end
 end
 
 # FIXME Chef::Resource::Template will only accept a Hash, not a Chef::Node::Attribute
