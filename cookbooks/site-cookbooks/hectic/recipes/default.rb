@@ -28,7 +28,7 @@ end
 gem_package 'haml'
 
 deploy node[:hectic][:deploy_to] do
-  repo 'git://github.com/matthewtodd/hectic.git'
+  repo node[:hectic][:repository]
   revision node[:hectic][:revision]
   migrate true
   migration_command 'rake db:migrate'
