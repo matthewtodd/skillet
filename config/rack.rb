@@ -9,12 +9,6 @@ class RequireSSL < Struct.new(:app)
   end
 end
 
-unless Merb.environment == 'development'
-  use RequireSSL
-  use Rack::Auth::Basic do |access_token, _|
-    access_token == ENV['APP_ACCESS_TOKEN']
-  end
-end
-
+use RequireSSL unless Merb.environment == 'development'
 use Merb::Rack::Static, ChefServerSlice.dir_for(:public)
 run Merb::Rack::Application.new

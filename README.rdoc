@@ -16,19 +16,18 @@ I happen to be using Heroku. Here's how you'd deploy there:
  cd skillet
  # adjust cookbooks to your liking
  heroku create
- heroku config:add APP_ACCESS_TOKEN=acbd18db4cc2f85cedef654fccc4a4d8
  heroku config:add MERB_SESSION_SECRET_KEY=37b51d194a7513e45b56f6524f2d51f2
  heroku config:add CHEF_AUTHORIZED_OPENID_IDENTIFIERS=one.example.com,two.example.com
  heroku config:add CHEF_AUTHORIZED_OPENID_PROVIDERS=provider.example.com,another-provider.example.com
  heroku config:add CHEF_COUCHDB_URL=https://user:pass@couchdb-instance.example.com
- heroku config:add CHEF_OPENID_URL=https://acbd18db4cc2f85cedef654fccc4a4d8:X@curried-emu-12.heroku.com
+ heroku config:add CHEF_OPENID_URL=https://curried-emu-12.heroku.com
  heroku config:add CHEF_VALIDATION_TOKEN=73feffa4b7f6bb68e44cf984c85f6e88
  heroku addons:add piggyback_ssl
  git push heroku master
 
-Then, assuming your <tt>APP_ACCESS_TOKEN</tt> is "acbd18db4cc2f85cedef654fccc4a4d8" and your app is "curried-emu-12", give it a go with
+Then, assuming your app lives at "curried-emu-12", give it a go with
 
- open https://acbd18db4cc2f85cedef654fccc4a4d8:X@curried-emu-12.heroku.com
+ open https://curried-emu-12.heroku.com
 
 You'll need to crank your dynos to 2 so that your Chef clients can register and authenticate themselves with OpenID.
 
